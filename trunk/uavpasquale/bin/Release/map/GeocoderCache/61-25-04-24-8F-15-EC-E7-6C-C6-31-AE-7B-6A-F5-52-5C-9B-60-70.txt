@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>Budapest, Hungary</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>Budapest, Hungary</address>
+    <AddressDetails Accuracy="4" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>HU</CountryNameCode><CountryName>Hungary</CountryName><AdministrativeArea><AdministrativeAreaName>Budapest</AdministrativeAreaName><SubAdministrativeArea><SubAdministrativeAreaName>Budapest</SubAdministrativeAreaName><Locality><LocalityName>Budapest</LocalityName></Locality></SubAdministrativeArea></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="47.6130119" south="47.3494150" east="19.3345050" west="18.9261011" />
+    </ExtendedData>
+    <Point><coordinates>19.0402350,47.4979120,0</coordinates></Point>
+  </Placemark>
+</Response></kml>

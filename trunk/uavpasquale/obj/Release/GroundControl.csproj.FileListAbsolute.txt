@@ -1,0 +1,36 @@
+D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\bin\Release\GroundControl.exe.config
+D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\bin\Release\GroundControl.exe
+D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\bin\Release\GroundControl.pdb
+D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\bin\Release\GMap.NET.Core.dll
+D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\bin\Release\GMap.NET.WindowsForms.dll
+D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\bin\Release\GMap.NET.Core.xml
+D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\bin\Release\GMap.NET.WindowsForms.xml
+D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Release\ResolveAssemblyReference.cache
+D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Release\WindowsFormsApplication1.Altimeter.resources
+D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Release\WindowsFormsApplication1.Compass.resources
+D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Release\WindowsFormsApplication1.Instruments.resources
+D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Release\GroundControl.Properties.Resources.resources
+D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Release\WindowsFormsApplication1.Speed.resources
+D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Release\WindowsFormsApplication1.Vario.resources
+D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Release\GenerateResource.read.1.tlog
+D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Release\GenerateResource.write.1.tlog
+D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Release\GroundControl.exe
+D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Release\GroundControl.pdb
+C:\Users\Pasquale\Desktop\GroundControl\GroundControl\bin\Release\GroundControl.exe.config
+C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Release\GroundControl.exe
+C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Release\GroundControl.pdb
+C:\Users\Pasquale\Desktop\GroundControl\GroundControl\bin\Release\GroundControl.exe
+C:\Users\Pasquale\Desktop\GroundControl\GroundControl\bin\Release\GroundControl.pdb
+C:\Users\Pasquale\Desktop\GroundControl\GroundControl\bin\Release\GMap.NET.Core.dll
+C:\Users\Pasquale\Desktop\GroundControl\GroundControl\bin\Release\GMap.NET.WindowsForms.dll
+C:\Users\Pasquale\Desktop\GroundControl\GroundControl\bin\Release\GMap.NET.Core.xml
+C:\Users\Pasquale\Desktop\GroundControl\GroundControl\bin\Release\GMap.NET.WindowsForms.xml
+C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Release\WindowsFormsApplication1.Altimeter.resources
+C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Release\WindowsFormsApplication1.Compass.resources
+C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Release\WindowsFormsApplication1.Instruments.resources
+C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Release\GroundControl.Properties.Resources.resources
+C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Release\WindowsFormsApplication1.Speed.resources
+C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Release\WindowsFormsApplication1.Vario.resources
+C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Release\GenerateResource.read.1.tlog
+C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Release\GenerateResource.write.1.tlog
