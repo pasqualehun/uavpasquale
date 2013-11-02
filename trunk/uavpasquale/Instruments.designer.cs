@@ -43,7 +43,8 @@
 			this.altimeter1 = new WindowsFormsApplication1.Altimeter();
 			this.compass1 = new WindowsFormsApplication1.Compass();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.view1 = new View();
+			this.view1 = new WindowsFormsApplication1.View();
+			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
@@ -116,6 +117,7 @@
 						| System.Windows.Forms.AnchorStyles.Right)));
 			this.tabControl1.Controls.Add(this.tabPage1);
 			this.tabControl1.Controls.Add(this.tabPage2);
+			this.tabControl1.Controls.Add(this.tabPage3);
 			this.tabControl1.Location = new System.Drawing.Point(2, 2);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
@@ -186,6 +188,16 @@
 			this.view1.Size = new System.Drawing.Size(702, 362);
 			this.view1.TabIndex = 1;
 			// 
+			// tabPage3
+			// 
+			this.tabPage3.Location = new System.Drawing.Point(4, 22);
+			this.tabPage3.Name = "tabPage3";
+			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage3.Size = new System.Drawing.Size(710, 365);
+			this.tabPage3.TabIndex = 2;
+			this.tabPage3.Text = "3.";
+			this.tabPage3.UseVisualStyleBackColor = true;
+			// 
 			// Instruments
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,6 +230,7 @@
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabPage tabPage2;
 		private View view1;
+		private System.Windows.Forms.TabPage tabPage3;
 
         
 
