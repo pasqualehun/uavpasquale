@@ -87,3 +87,20 @@ C:\Users\Pasquale\Desktop\GroundControl\obj\Debug\GroundControl.pdb
 C:\Users\Pasquale\Desktop\GroundControl másolata másolata\obj\Debug\GroundControl.pdb
 C:\Users\Pasquale\Desktop\GroundControl\bin\Debug\GMap.NET.Core.dll
 C:\Users\Pasquale\Desktop\GroundControl\bin\Debug\GMap.NET.WindowsForms.dll
+C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\bin\Debug\GroundControl.exe.config
+C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\GroundControl.exe
+C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\GroundControl.pdb
+C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\bin\Debug\GroundControl.exe
+C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\bin\Debug\GroundControl.pdb
+C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\bin\Debug\GMap.NET.Core.dll
+C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\bin\Debug\GMap.NET.WindowsForms.dll
+C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\WindowsFormsApplication1.Altimeter.resources
+C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\WindowsFormsApplication1.Compass.resources
+C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\WindowsFormsApplication1.Instruments.resources
+C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\GroundControl.Properties.Resources.resources
+C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\WindowsFormsApplication1.Speed.resources
+C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\WindowsFormsApplication1.Vario.resources
+C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\WindowsFormsApplication1.View.resources
+C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\GenerateResource.write.1.tlog
