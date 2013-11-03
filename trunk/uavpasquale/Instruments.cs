@@ -17,6 +17,8 @@ namespace WindowsFormsApplication1
 {
     public partial class Instruments : Form
     {
+		public const int MAX_POINTS = 10;
+
 		Decode_serial decoder= new Decode_serial();
 
 
@@ -31,6 +33,8 @@ namespace WindowsFormsApplication1
 		static String[] names = { "idő", "idő", "phi", "theta", "psi", "angvel x", "angvel y", "angvel z", "acc x", "acc y", "acc z", "vn", "ve", "vd", "lat", "lon", "alt", "control_cm.da", "control_meas.da", "control_meas.current[0]", "dummy", "dummy", "control_cm.de", "control_meas.de", "control_meas.current[1]", "dummy", "dummy", "control_cm.dr", "control_meas.dr", "control_meas.current[2]", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "control_cm.dthr", "control_meas.dthr", "dummy", "dummy", "dummy", "control_cm.dthr", "control_meas.dthr", "dummy", "dummy", "dummy", "is_master", "error_imu_gps_ahrs", "error_imu_gps_ahrs", "error_nav", "error_control", "error_cpu", "error_other_fcc", "checksum", "Speed", "HDG" };
 
 		static object lockObj = new object();
+
+
 
         public Instruments()
         {
@@ -186,7 +190,6 @@ namespace WindowsFormsApplication1
 					speed1.Invalidate();
 					compass1.Invalidate();
 					view1.Invalidate();
-
 				}
 			}
 		}
@@ -198,10 +201,12 @@ namespace WindowsFormsApplication1
 
 		static List<PointLatLng> points = new List<PointLatLng>();
 		
-		static GMapRoute polygon = new GMapRoute("");
+		static GMapRoute flightRoute = new GMapRoute("");
 
-		static GMapMarkerImage marker;
-		
+		static GMapMarkerImage planeMarker;
+
+		GMapOverlay planeMarkerOverlay = new GMapOverlay("markers");
+
 		private void gMapControl1_Load(object sender, EventArgs e)
 		{
 			gmap.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
@@ -214,45 +219,55 @@ namespace WindowsFormsApplication1
 			gmap.SetPositionByKeywords("Budapest, Hungary");
 			gmap.Position = new PointLatLng(47.471154, 19.062481);
 
-			GMapOverlay markersOverlay = new GMapOverlay("markers");
+			
 
 			Bitmap btm = new Bitmap("png1t.png");
 			if (btm == null)
 				throw new NoNullAllowedException("as");
 
-			marker = new GMapMarkerImage(new PointLatLng(47.471154, 19.062481), btm);
-			markersOverlay.Markers.Add(marker);
-			gmap.Overlays.Add(markersOverlay);
+			planeMarker = new GMapMarkerImage(new PointLatLng(47.471154, 19.062481), btm);
+			planeMarkerOverlay.Markers.Add(planeMarker);
+			gmap.Overlays.Add(planeMarkerOverlay);
 
 
-			GMapOverlay polyOverlay = new GMapOverlay("polygons");
-			
+			GMapOverlay flightRouteOverlay = new GMapOverlay("polygons");			
 	
-			polygon.Stroke = new Pen(Color.Red, 2);
-			polyOverlay.Routes.Add(polygon);
-			gmap.Overlays.Add(polyOverlay);
+			flightRoute.Stroke = new Pen(Color.Red, 2);
+			flightRouteOverlay.Routes.Add(flightRoute);
+			gmap.Overlays.Add(flightRouteOverlay);
+
+			GMapOverlay routeOverlay2 = new GMapOverlay("route2");
+
+			//gmap.Overlays.Add(markerOverlay);
+
+			flightRouteOverlay.Routes.Add(flightRoute);
+
+			routeOverlay2.Routes.Add(plannedRoute);
+
+			gmap.Overlays.Add(routeOverlay2);
 
 
 
-			//points.Add(new PointLatLng(47.471154, 19.062481));
-			//points.Add(new PointLatLng(47.473214, 19.059091));
-			//points.Add(new PointLatLng(47.473925, 19.059219));
-			//points.Add(new PointLatLng(47.474505, 19.05952));
-			//points.Add(new PointLatLng(47.47436, 19.058876));
-			//points.Add(new PointLatLng(47.47449, 19.058533));
-			//points.Add(new PointLatLng(47.47449, 19.058533));
-			//points.Add(new PointLatLng(47.475172, 19.056151));
-			//points.Add(new PointLatLng(47.474867, 19.055378));
-			//points.Add(new PointLatLng(47.474273, 19.054241));
-			//points.Add(new PointLatLng(47.473939, 19.053512));
-			//points.Add(new PointLatLng(47.473606, 19.052761));
-			//points.Add(new PointLatLng(47.473142, 19.052417));
-			//points.Add(new PointLatLng(47.472764, 19.052482));
-			//points.Add(new PointLatLng(47.470792, 19.052932));
-			//points.Add(new PointLatLng(47.471154, 19.053512));
-			//points.Add(new PointLatLng(47.472387, 19.055293));
-			//points.Add(new PointLatLng(47.473258, 19.056516));
-			//points.Add(new PointLatLng(47.473838, 19.056988));
+
+			points.Add(new PointLatLng(47.471154, 19.062481));
+			points.Add(new PointLatLng(47.473214, 19.059091));
+			points.Add(new PointLatLng(47.473925, 19.059219));
+			points.Add(new PointLatLng(47.474505, 19.05952));
+			points.Add(new PointLatLng(47.47436, 19.058876));
+			points.Add(new PointLatLng(47.47449, 19.058533));
+			points.Add(new PointLatLng(47.47449, 19.058533));
+			points.Add(new PointLatLng(47.475172, 19.056151));
+			points.Add(new PointLatLng(47.474867, 19.055378));
+			points.Add(new PointLatLng(47.474273, 19.054241));
+			points.Add(new PointLatLng(47.473939, 19.053512));
+			points.Add(new PointLatLng(47.473606, 19.052761));
+			points.Add(new PointLatLng(47.473142, 19.052417));
+			points.Add(new PointLatLng(47.472764, 19.052482));
+			points.Add(new PointLatLng(47.470792, 19.052932));
+			points.Add(new PointLatLng(47.471154, 19.053512));
+			points.Add(new PointLatLng(47.472387, 19.055293));
+			points.Add(new PointLatLng(47.473258, 19.056516));
+			points.Add(new PointLatLng(47.473838, 19.056988));
 
 
 			
@@ -263,13 +278,18 @@ namespace WindowsFormsApplication1
 		int aa = 0;	
 		void AddCoordinate(PointLatLng a)
 		{
+			if (aa > 10)
+				aa = 0;
+			flightRoute.Points.Add(points.ElementAt(aa));
+			//flightRoute.Points.Add(a);
 
-			//polygon.Points.Add(points.ElementAt(aa));
-			polygon.Points.Add(a);
-			gmap.UpdateRouteLocalPosition(polygon);
-			//marker.Position = points.ElementAt(aa);
-			marker.Position = a;
+			gmap.UpdateRouteLocalPosition(flightRoute);
+
+			planeMarker.Position = points.ElementAt(aa);
+			//planeMarker.Position = a;
+
 			gmap.Invalidate();
+			aa++;
 		}
 
 		public class GMapMarkerImage : GMap.NET.WindowsForms.GMapMarker
@@ -328,6 +348,128 @@ namespace WindowsFormsApplication1
 
 			//return the image
 			return bmp;
+		}
+
+		private void gmap_plan_Load(object sender, EventArgs e)
+		{
+			gmap_plan.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
+			gmap_plan.CacheLocation = "map";
+			gmap_plan.DragButton = MouseButtons.Left;
+
+			//GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerAndCache;
+			GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.CacheOnly;
+
+			gmap_plan.SetPositionByKeywords("Budapest, Hungary");
+			gmap_plan.Position = new PointLatLng(47.471154, 19.062481);
+
+			plannedRoute.Stroke = new Pen(Color.MediumBlue, 2);
+
+			gmap_plan.Overlays.Add(markerOverlay);
+			gmap_plan.Overlays.Add(plannedRouteOverlay);
+
+			plannedRouteOverlay.Routes.Add(plannedRoute);
+
+			calculation2.Update(ref plannedRoute, gmap_plan);
+		}
+
+		int numberOfPoints = 1;
+		GMapOverlay markerOverlay = new GMapOverlay("markers");
+		GMapOverlay plannedRouteOverlay = new GMapOverlay("route");
+
+		GMapRoute plannedRoute = new GMapRoute("");
+		private GMapMarker currentMarker;
+		private bool isDraggingMarker;
+
+
+
+		
+		private void gmap_plan_MouseDoubleClick(object sender, MouseEventArgs e)
+		{
+
+			if (numberOfPoints <= MAX_POINTS)
+			{
+				PointLatLng currentPos = new PointLatLng(gmap_plan.FromLocalToLatLng(e.X, e.Y).Lat, gmap_plan.FromLocalToLatLng(e.X, e.Y).Lng);
+				GMarkerGoogle marker = new GMarkerGoogle(currentPos, GMarkerGoogleType.blue_small);
+
+				marker.ToolTipText = (numberOfPoints++).ToString();
+
+				planeMarkerOverlay.Markers.Add(marker);
+				markerOverlay.Markers.Add(marker);
+
+				plannedRoute.Points.Add(currentPos);
+
+				calculation2.Invalidate();
+
+				gmap_plan.UpdateRouteLocalPosition(plannedRoute);
+			}
+		}
+
+		private void calculation2_Load(object sender, EventArgs e)
+		{
+
+		}
+
+		int indexOfCurrentPoint;
+
+		private void gmap_MouseDoubleClick(object sender, MouseEventArgs e)
+		{
+			AddCoordinate(new PointLatLng(47.473838, 19.056988));
+		}
+
+		private void gmap_plan_OnMarkerEnter(GMapMarker item)
+		{
+			if (!isDraggingMarker)
+			{
+				currentMarker = item; 
+				indexOfCurrentPoint = plannedRoute.Points.FindIndex(point => point == currentMarker.Position);
+			}
+		}
+
+		private void gmap_plan_MouseUp(object sender, MouseEventArgs e)
+		{
+			isDraggingMarker = false;
+			currentMarker = null;
+		}
+
+	
+
+		private void gmap_plan_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Left)
+			{
+				if (currentMarker != null && currentMarker.IsMouseOver)
+				{
+					isDraggingMarker = true;				
+				}
+			}
+		}
+
+		private void gmap_plan_MouseMove(object sender, MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Left && isDraggingMarker && currentMarker != null)
+			{
+				currentMarker.Position = gmap_plan.FromLocalToLatLng(e.X, e.Y);
+				
+				PointLatLng newPos = gmap_plan.FromLocalToLatLng(e.X, e.Y);
+				
+				plannedRoute.Points.RemoveAt(indexOfCurrentPoint);
+				plannedRoute.Points.Insert(indexOfCurrentPoint, newPos);
+
+				gmap_plan.UpdateRouteLocalPosition(plannedRoute);
+				gmap_plan.Refresh();
+				calculation2.Invalidate();
+
+			}
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			Console.WriteLine(plannedRoute.Points.Count+"-------------------");
+			foreach (var item in plannedRoute.Points)
+			{
+				Console.WriteLine(item.ToString());
+				
+			}
 		}
     }
 }
