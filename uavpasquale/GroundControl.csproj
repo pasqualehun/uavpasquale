@@ -88,6 +88,12 @@
     <Compile Include="Altimeter.designer.cs">
       <DependentUpon>Altimeter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Calculation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Calculation.Designer.cs">
+      <DependentUpon>Calculation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Compass.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,6 +102,7 @@
     </Compile>
     <Compile Include="DataElement.cs" />
     <Compile Include="Decode_serial.cs" />
+    <Compile Include="GMap.cs" />
     <Compile Include="Instruments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +119,9 @@
     </Compile>
     <EmbeddedResource Include="Altimeter.resx">
       <DependentUpon>Altimeter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calculation.resx">
+      <DependentUpon>Calculation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Compass.resx">
       <DependentUpon>Compass.cs</DependentUpon>
