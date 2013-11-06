@@ -13,8 +13,6 @@ namespace WindowsFormsApplication1
 {
 	public partial class Calculation : UserControl
 	{
-		
-
 		private GMapRoute route;
 		private GMapControl gmap_plan;
 
@@ -44,8 +42,6 @@ namespace WindowsFormsApplication1
 			DrawStatus(g);
 		}
 
-
-
 		private void DrawStatus(Graphics g)
 		{
 			if (route != null)
@@ -66,13 +62,10 @@ namespace WindowsFormsApplication1
 				{
 					g.DrawString("Max. 9 pont kijelölése lehetséges", font, brushRed, 0F, 12 * numberOfPoints);
 				}
-				
-
-			}
+			}	
 		}
 
-
-		public void Update(ref GMapRoute route, GMapControl gmap_plan)
+		public void AddReferencesToPlanningCalculation(ref GMapRoute route, GMapControl gmap_plan)
 		{
 			this.route = route;
 			this.gmap_plan = gmap_plan;
