@@ -166,7 +166,7 @@ namespace WindowsFormsApplication1
 			{
 				Thread.Sleep(1000);
 
-				if(serialPort1.IsOpen && serialPort2.IsOpen)
+				if (serialPort1.IsOpen && decodedFromA[14] != 0)//&& serialPort2.IsOpen)
 				{
 					AddCoordinate(new PointLatLng(decodedFromA[14], decodedFromA[15]));
 
@@ -280,13 +280,13 @@ namespace WindowsFormsApplication1
 		{
 			if (aa > 10)
 				aa = 0;
-			flightRoute.Points.Add(points.ElementAt(aa));
-			//flightRoute.Points.Add(a);
+			//flightRoute.Points.Add(points.ElementAt(aa));
+			flightRoute.Points.Add(a);
 
 			gmap.UpdateRouteLocalPosition(flightRoute);
 
-			planeMarker.Position = points.ElementAt(aa);
-			//planeMarker.Position = a;
+			//planeMarker.Position = points.ElementAt(aa);
+			planeMarker.Position = a;
 
 			gmap.Invalidate();
 			aa++;
@@ -369,7 +369,7 @@ namespace WindowsFormsApplication1
 
 			plannedRouteOverlay.Routes.Add(plannedRoute);
 
-			calculation2.Update(ref plannedRoute, gmap_plan);
+			calculation2.AddReferencesToPlanningCalculation(ref plannedRoute, gmap_plan);
 		}
 
 		int numberOfPoints = 1;
