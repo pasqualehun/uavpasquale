@@ -42,9 +42,6 @@ namespace WindowsFormsApplication1
 		{
 			if (flagA && flagB)
 			{
-
-
-
 				double tempa = 0;
 				double tempb = 0;
 				for (int i = 0; i < numberOfSamples; i++)

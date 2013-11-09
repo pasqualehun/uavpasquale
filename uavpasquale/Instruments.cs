@@ -21,9 +21,10 @@ namespace WindowsFormsApplication1
 
 		Decode_serial decoder= new Decode_serial();
 
+		const int SIZE = 75;
 
-		static byte[] receivedBytesA = new byte[159];
-		static byte[] receivedBytesB = new byte[159];
+		static byte[] receivedBytesA = new byte[SIZE];
+		static byte[] receivedBytesB = new byte[SIZE];
 
 		static double[] decodedFromA = new double[77];
 		static double[] decodedFromB = new double[77];
@@ -34,6 +35,7 @@ namespace WindowsFormsApplication1
 
 		static object lockObj = new object();
 
+		
 
 
         public Instruments()
@@ -67,7 +69,7 @@ namespace WindowsFormsApplication1
             if(serialPort1.IsOpen)
 				try
 				{
-					(sender as System.IO.Ports.SerialPort).Read(receivedBytesA, 0, 159);
+					(sender as System.IO.Ports.SerialPort).Read(receivedBytesA, 0, SIZE);
 				}
 				catch (Exception)
 				{
@@ -95,7 +97,7 @@ namespace WindowsFormsApplication1
 			if (serialPort2.IsOpen)
 				try
 				{
-					(sender as System.IO.Ports.SerialPort).Read(receivedBytesB, 0, 159);
+					(sender as System.IO.Ports.SerialPort).Read(receivedBytesB, 0, SIZE);
 				}
 				catch (Exception)
 				{
