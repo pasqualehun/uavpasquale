@@ -105,3 +105,21 @@ C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundCo
 C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\GenerateResource.read.1.tlog
 C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\GenerateResource.write.1.tlog
 C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\WindowsFormsApplication1.Calculation.resources
+C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\bin\Debug\GroundControl.exe.config
+C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\GroundControl.exe
+C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\GroundControl.pdb
+C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\bin\Debug\GroundControl.exe
+C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\bin\Debug\GroundControl.pdb
+C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\bin\Debug\GMap.NET.Core.dll
+C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\bin\Debug\GMap.NET.WindowsForms.dll
+C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\WindowsFormsApplication1.Altimeter.resources
+C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\WindowsFormsApplication1.Calculation.resources
+C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\WindowsFormsApplication1.Compass.resources
+C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\WindowsFormsApplication1.Instruments.resources
+C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\GroundControl.Properties.Resources.resources
+C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\WindowsFormsApplication1.Speed.resources
+C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\WindowsFormsApplication1.Vario.resources
+C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\WindowsFormsApplication1.View.resources
+C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\GenerateResource.write.1.tlog
