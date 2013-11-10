@@ -47,7 +47,6 @@ namespace WindowsFormsApplication1
 			if (route != null)
 			{
 				g.DrawString("Összesen : " + String.Format("{0:0.00}", route.Distance) + "km", font, brushBlue, 0F, 0F);
-				
 				PointLatLng prevPoint = new PointLatLng(0,0);
 				float numberOfPoints = 1;
 				foreach (var item in route.Points)

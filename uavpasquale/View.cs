@@ -45,10 +45,12 @@ namespace WindowsFormsApplication1
 			InitializeComponent();
 			DoubleBuffered = true;
 
-			arrayA = new double[77];
-			arrayB = new double[77];
+			int ARRAYSIZE = 29;
 
-			elements = new DataElement[77];
+			arrayA = new double[ARRAYSIZE];
+			arrayB = new double[ARRAYSIZE];
+
+			elements = new DataElement[ARRAYSIZE];
 
 
 			for (int i = 0; i < elements.Length; i++)
@@ -102,7 +104,7 @@ namespace WindowsFormsApplication1
 
 			//g.DrawString("Vario  " + elements[13].GetData().ToString().Substring(0,3).ToString(), font, brushBlue, 10F, 140F);
 
-			for (int i = 0; i < 38; i++)
+			for (int i = 0; i < 29; i++)
 			{
 				g.DrawString(elements[i].GetName(), font, brushBlue, 120F, i * 10F);
 				g.DrawString(elements[i].fromA[9].ToString() + " " , font, brushBlue, 260F, i * 10F);
@@ -117,7 +119,7 @@ namespace WindowsFormsApplication1
 
 		private void DrawStatus(Graphics g)
 		{
-			int i=(int)arrayA[68];
+			int i=(int)arrayA[0];
 			if (i >= 0 && i < error_imu_gps_ahrs.Length)
 				g.DrawString("GPS :	" + error_imu_gps_ahrs[i].ToString(), font, brushRed, 10F, 10F);
 			else
