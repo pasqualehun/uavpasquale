@@ -26,12 +26,12 @@ namespace WindowsFormsApplication1
 		static byte[] receivedBytesA = new byte[SIZE];
 		static byte[] receivedBytesB = new byte[SIZE];
 
-		static double[] decodedFromA = new double[77];
-		static double[] decodedFromB = new double[77];
+		static double[] decodedFromA = new double[29];
+		static double[] decodedFromB = new double[29];
 
-		static DataElement[] elements = new DataElement[77];
+		static DataElement[] elements = new DataElement[29];
 
-		static String[] names = { "idő", "idő", "phi", "theta", "psi", "angvel x", "angvel y", "angvel z", "acc x", "acc y", "acc z", "vn", "ve", "vd", "lat", "lon", "alt", "control_cm.da", "control_meas.da", "control_meas.current[0]", "dummy", "dummy", "control_cm.de", "control_meas.de", "control_meas.current[1]", "dummy", "dummy", "control_cm.dr", "control_meas.dr", "control_meas.current[2]", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "dummy", "control_cm.dthr", "control_meas.dthr", "dummy", "dummy", "dummy", "control_cm.dthr", "control_meas.dthr", "dummy", "dummy", "dummy", "is_master", "error_imu_gps_ahrs", "error_imu_gps_ahrs", "error_nav", "error_control", "error_cpu", "error_other_fcc", "checksum", "Speed", "HDG" };
+		static String[] names = { "idő", "magassás", "sebesség", "smart_imu->gyr1[0]", "smart_imu->gyr1[1]", "smart_imu->gyr1[2]", "tmp_P", "sebesség", "ahrs->psi", "ahrs->theta", "ahrs->phi", "control_cm->dr", "control_cm->de", "control_cm->da", "control_cm->dthr", "GPS health", "lon", "lat", "height", "smart_imu->acc1[0]", "smart_imu->acc1[1]", "smart_imu->acc1[2]", "smart_imu->mag[0]", "smart_imu->mag[1]", "smart_imu->mag[2]", "flightmode", "nextwaypoint*10+lc", "state->ms", "checksum" };
 
 		static object lockObj = new object();
 
@@ -41,19 +41,9 @@ namespace WindowsFormsApplication1
         public Instruments()
         {
 			InitializeComponent();
-            
 
-			// Nice methods to browse all available ports:
-			string[] ports = SerialPort.GetPortNames();
 
-			// Add all port names to the combo box:
-			foreach (string port in ports)
-			{
-				comboBox1.Items.Add(port);
-                comboBox2.Items.Add(port);
-			}
-			comboBox1.Items.Add("Close");
-			comboBox2.Items.Add("Close");
+			addItemsToComboboxes();
 
 			for (int i = 0; i < elements.Length; i++)
 			{
@@ -61,6 +51,21 @@ namespace WindowsFormsApplication1
 			}
 
         }
+
+		public void addItemsToComboboxes()
+		{
+			// Nice methods to browse all available ports:
+			string[] ports = SerialPort.GetPortNames();
+
+			// Add all port names to the combo box:
+			foreach (string port in ports)
+			{
+				comboBox1.Items.Add(port);
+				comboBox2.Items.Add(port);
+			}
+			comboBox1.Items.Add("Bezárás");
+			comboBox2.Items.Add("Bezárás");
+		}
         
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
@@ -122,7 +127,7 @@ namespace WindowsFormsApplication1
 		{
 			if (serialPort1.IsOpen)
 				serialPort1.Close();
-			if (comboBox1.SelectedItem.ToString() != "Close")
+			if (comboBox1.SelectedItem.ToString() != "Bezárás")
 				serialPort1.PortName = comboBox1.SelectedItem.ToString();
 			else
 				return;
@@ -179,11 +184,11 @@ namespace WindowsFormsApplication1
 
 					//speed1.UpdateSpeed((float)decodedFromA[75]);
 
-					speed1.UpdateSpeed((float)elements[75].GetData());
+					speed1.UpdateSpeed((float)elements[7].GetData());
 
 					vario1.UpdateClimb((float)decodedFromA[13]);
-					altimeter1.UpdateAlt((float)decodedFromA[16]);
-					compass1.UpdateHeading((float)decodedFromA[76]);
+					altimeter1.UpdateAlt((float)decodedFromA[18]);
+					compass1.UpdateHeading((float)decodedFromA[0]);
 				
 
 					vario1.Invalidate();
@@ -317,8 +322,8 @@ namespace WindowsFormsApplication1
 			public override void OnRender(Graphics g)
 			{
 											
-				
-				g.DrawImage(RotateImage(img, (float)decodedFromA[76]), LocalPosition.X, LocalPosition.Y, Size.Height, Size.Width);
+				//TODO rotate pklane
+				g.DrawImage(RotateImage(img, (float)decodedFromA[0]), LocalPosition.X, LocalPosition.Y, Size.Height, Size.Width);
 				//g.DrawImage(img, LocalPosition.X, LocalPosition.Y, Size.Height, Size.Width);			
 				
 				base.OnRender(g);
@@ -388,7 +393,7 @@ namespace WindowsFormsApplication1
 		private void gmap_plan_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
 
-			if (numberOfPoints <= MAX_POINTS)
+			if (plannedRoute.Points.Count < MAX_POINTS && e.Button == MouseButtons.Left)
 			{
 				PointLatLng currentPos = new PointLatLng(gmap_plan.FromLocalToLatLng(e.X, e.Y).Lat, gmap_plan.FromLocalToLatLng(e.X, e.Y).Lng);
 				GMarkerGoogle marker = new GMarkerGoogle(currentPos, GMarkerGoogleType.blue_small);
@@ -469,8 +474,25 @@ namespace WindowsFormsApplication1
 			Console.WriteLine(plannedRoute.Points.Count+"-------------------");
 			foreach (var item in plannedRoute.Points)
 			{
-				Console.WriteLine(item.ToString());
+				Console.WriteLine(item.ToString());				
+			}
+		}
+
+		private void gmap_plan_MouseClick(object sender, MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Right && currentMarker != null)
+			{
+				planeMarkerOverlay.Markers.Remove(currentMarker);
+				markerOverlay.Markers.Remove(currentMarker);
+
+
+				PointLatLng newPos = gmap_plan.FromLocalToLatLng(e.X, e.Y);
+
+				plannedRoute.Points.RemoveAt(indexOfCurrentPoint);
 				
+				gmap_plan.UpdateRouteLocalPosition(plannedRoute);
+				gmap_plan.Refresh();
+				calculation2.Invalidate();
 			}
 		}
     }

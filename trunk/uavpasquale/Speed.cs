@@ -111,7 +111,7 @@ namespace WindowsFormsApplication1
 
         public void UpdateSpeed(double speed)
         {
-            currentSpeed = speed;
+            currentSpeed = speed*3.6;
         }
     }
 }

@@ -38,15 +38,15 @@
 			this.serialPort2 = new System.IO.Ports.SerialPort(this.components);
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.tabPage3 = new System.Windows.Forms.TabPage();
-			this.gmap_plan = new GMap.NET.WindowsForms.GMapControl();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.button1 = new System.Windows.Forms.Button();
 			this.speed1 = new WindowsFormsApplication1.Speed();
 			this.vario1 = new WindowsFormsApplication1.Vario();
 			this.altimeter1 = new WindowsFormsApplication1.Altimeter();
 			this.compass1 = new WindowsFormsApplication1.Compass();
+			this.tabPage3 = new System.Windows.Forms.TabPage();
+			this.button1 = new System.Windows.Forms.Button();
 			this.calculation2 = new WindowsFormsApplication1.Calculation();
+			this.gmap_plan = new GMap.NET.WindowsForms.GMapControl();
+			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.view1 = new WindowsFormsApplication1.View();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -146,6 +146,35 @@
 			this.tabPage1.Text = "1.";
 			this.tabPage1.UseVisualStyleBackColor = true;
 			// 
+			// speed1
+			// 
+			this.speed1.CurrentSpeed = 0D;
+			this.speed1.Location = new System.Drawing.Point(3, 0);
+			this.speed1.Name = "speed1";
+			this.speed1.Size = new System.Drawing.Size(180, 169);
+			this.speed1.TabIndex = 2;
+			// 
+			// vario1
+			// 
+			this.vario1.Location = new System.Drawing.Point(178, 0);
+			this.vario1.Name = "vario1";
+			this.vario1.Size = new System.Drawing.Size(179, 169);
+			this.vario1.TabIndex = 1;
+			// 
+			// altimeter1
+			// 
+			this.altimeter1.Location = new System.Drawing.Point(3, 166);
+			this.altimeter1.Name = "altimeter1";
+			this.altimeter1.Size = new System.Drawing.Size(180, 168);
+			this.altimeter1.TabIndex = 3;
+			// 
+			// compass1
+			// 
+			this.compass1.Location = new System.Drawing.Point(178, 166);
+			this.compass1.Name = "compass1";
+			this.compass1.Size = new System.Drawing.Size(179, 168);
+			this.compass1.TabIndex = 4;
+			// 
 			// tabPage3
 			// 
 			this.tabPage3.Controls.Add(this.button1);
@@ -158,6 +187,26 @@
 			this.tabPage3.TabIndex = 2;
 			this.tabPage3.Text = "3.";
 			this.tabPage3.UseVisualStyleBackColor = true;
+			// 
+			// button1
+			// 
+			this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+			this.button1.Location = new System.Drawing.Point(568, 168);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(75, 23);
+			this.button1.TabIndex = 9;
+			this.button1.Text = "Feltöltés";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// calculation2
+			// 
+			this.calculation2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.calculation2.Location = new System.Drawing.Point(520, 0);
+			this.calculation2.Name = "calculation2";
+			this.calculation2.Size = new System.Drawing.Size(190, 162);
+			this.calculation2.TabIndex = 8;
+			this.calculation2.Load += new System.EventHandler(this.calculation2_Load);
 			// 
 			// gmap_plan
 			// 
@@ -190,6 +239,7 @@
 			this.gmap_plan.Zoom = 14D;
 			this.gmap_plan.OnMarkerEnter += new GMap.NET.WindowsForms.MarkerEnter(this.gmap_plan_OnMarkerEnter);
 			this.gmap_plan.Load += new System.EventHandler(this.gmap_plan_Load);
+			this.gmap_plan.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gmap_plan_MouseClick);
 			this.gmap_plan.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gmap_plan_MouseDoubleClick);
 			this.gmap_plan.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gmap_plan_MouseDown);
 			this.gmap_plan.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gmap_plan_MouseMove);
@@ -205,55 +255,6 @@
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "2.";
 			this.tabPage2.UseVisualStyleBackColor = true;
-			// 
-			// button1
-			// 
-			this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.button1.Location = new System.Drawing.Point(568, 168);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 9;
-			this.button1.Text = "Feltöltés";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
-			// 
-			// speed1
-			// 
-			this.speed1.CurrentSpeed = 0D;
-			this.speed1.Location = new System.Drawing.Point(3, 0);
-			this.speed1.Name = "speed1";
-			this.speed1.Size = new System.Drawing.Size(180, 169);
-			this.speed1.TabIndex = 2;
-			// 
-			// vario1
-			// 
-			this.vario1.Location = new System.Drawing.Point(178, 0);
-			this.vario1.Name = "vario1";
-			this.vario1.Size = new System.Drawing.Size(179, 169);
-			this.vario1.TabIndex = 1;
-			// 
-			// altimeter1
-			// 
-			this.altimeter1.Location = new System.Drawing.Point(3, 166);
-			this.altimeter1.Name = "altimeter1";
-			this.altimeter1.Size = new System.Drawing.Size(180, 168);
-			this.altimeter1.TabIndex = 3;
-			// 
-			// compass1
-			// 
-			this.compass1.Location = new System.Drawing.Point(178, 166);
-			this.compass1.Name = "compass1";
-			this.compass1.Size = new System.Drawing.Size(179, 168);
-			this.compass1.TabIndex = 4;
-			// 
-			// calculation2
-			// 
-			this.calculation2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.calculation2.Location = new System.Drawing.Point(520, 0);
-			this.calculation2.Name = "calculation2";
-			this.calculation2.Size = new System.Drawing.Size(190, 162);
-			this.calculation2.TabIndex = 8;
-			this.calculation2.Load += new System.EventHandler(this.calculation2_Load);
 			// 
 			// view1
 			// 

@@ -10,10 +10,8 @@ namespace WindowsFormsApplication1
 		public double[] Decode(byte[] sentByteArray)
 		{
 
-			double[] returnArray = new double[77];
+			double[] returnArray = new double[29];
 
-			Dictionary<String,Double> map = new Dictionary<string,double>();
-			int i = 0;
 			int returnArrayIndex = 0;
 
 			const int SIZE = 75;
@@ -48,7 +46,6 @@ namespace WindowsFormsApplication1
 				double idod = Convert.ToDouble(ido) / 10000;
 				returnArray[returnArrayIndex++] = returnArray[1] = idod;
 
-				map.Add("Time", idod);
 				Console.WriteLine(idod);
 
 
@@ -65,6 +62,7 @@ namespace WindowsFormsApplication1
 				tempd = Convert.ToDouble(temp);
 				tempd = tempd / (UInt16.MaxValue/10000);
 				returnArray[returnArrayIndex++] = tempd;
+				Console.WriteLine("mag: " + tempd);
 
 				//////////////////////////////////////9,10 sebesség parancs
 				firstBytePosition = 9;
@@ -75,6 +73,7 @@ namespace WindowsFormsApplication1
 				tempd = Convert.ToDouble(temp);
 				tempd = tempd / (UInt16.MaxValue/80);
 				returnArray[returnArrayIndex++] = tempd;
+				Console.WriteLine("seb: " + tempd);
 
 				//////////////////////////////////////11,12
 				firstBytePosition = 11;
