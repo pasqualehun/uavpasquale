@@ -137,6 +137,7 @@ namespace WindowsFormsApplication1
 			try
 			{
 				serialPort1.Open();
+				serialPort1.WriteTimeout = 500;
 			}
 			// give a message, if the port is not available:
 			catch
@@ -157,6 +158,7 @@ namespace WindowsFormsApplication1
 			try
 			{
 				serialPort2.Open();
+				serialPort2.WriteTimeout = 500;
 			}
 			// give a message, if the port is not available:
 			catch
@@ -472,9 +474,34 @@ namespace WindowsFormsApplication1
 		private void button1_Click(object sender, EventArgs e)
 		{
 			Console.WriteLine(plannedRoute.Points.Count+"-------------------");
-			foreach (var item in plannedRoute.Points)
+			try
 			{
-				Console.WriteLine(item.ToString());				
+				serialPort1.Write(plannedRoute.Points.Count.ToString());
+
+				foreach (var item in plannedRoute.Points)
+				{
+					Console.WriteLine(item.ToString());
+					serialPort1.Write(item.ToString());
+				}
+		
+					
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("serial1   " +ex.Message);
+			}
+
+			try
+			{
+				serialPort2.Write(plannedRoute.Points.Count.ToString());
+				foreach (var item in plannedRoute.Points)
+				{
+					serialPort2.Write(item.ToString());
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("serial2   " + ex.Message);
 			}
 		}
 
