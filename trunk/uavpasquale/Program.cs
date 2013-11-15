@@ -15,7 +15,8 @@ namespace WindowsFormsApplication1
         static void Main()
         {
             //Serial a;
-
+			double[] a = new double[32];
+			SerialUtil.Code(a, 2);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

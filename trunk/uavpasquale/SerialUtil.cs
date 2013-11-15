@@ -5,9 +5,9 @@ using System.Text;
 
 namespace WindowsFormsApplication1
 {
-	public class Decode_serial
+	public static class SerialUtil
 	{
-		public double[] Decode(byte[] sentByteArray)
+		public static double[] Decode(byte[] sentByteArray)
 		{
 
 			double[] returnArray = new double[29];
@@ -39,9 +39,9 @@ namespace WindowsFormsApplication1
 				///////////0 u//1 u//2 t//3 ido1//4 ido2//5 ido3//6 ido4
 
 				uint ido = (uint)sentByteArray[firstBytePosition] << 24;
-				ido = ido | (uint)sentByteArray[firstBytePosition+1] << 16;
-				ido = ido | (uint)sentByteArray[firstBytePosition+2] << 8;
-				ido = ido | (uint)sentByteArray[firstBytePosition+3];
+				ido = ido | (uint)sentByteArray[firstBytePosition + 1] << 16;
+				ido = ido | (uint)sentByteArray[firstBytePosition + 2] << 8;
+				ido = ido | (uint)sentByteArray[firstBytePosition + 3];
 
 				double idod = Convert.ToDouble(ido) / 10000;
 				returnArray[returnArrayIndex++] = returnArray[1] = idod;
@@ -57,10 +57,10 @@ namespace WindowsFormsApplication1
 				firstBytePosition = 7;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
-				temp = temp | (uint)sentByteArray[firstBytePosition+1];
+				temp = temp | (uint)sentByteArray[firstBytePosition + 1];
 
 				tempd = Convert.ToDouble(temp);
-				tempd = tempd / (UInt16.MaxValue/10000);
+				tempd = tempd / (UInt16.MaxValue / 10000);
 				returnArray[returnArrayIndex++] = tempd;
 				Console.WriteLine("mag: " + tempd);
 
@@ -68,10 +68,10 @@ namespace WindowsFormsApplication1
 				firstBytePosition = 9;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
-				temp = temp | (uint)sentByteArray[firstBytePosition+1];
+				temp = temp | (uint)sentByteArray[firstBytePosition + 1];
 
 				tempd = Convert.ToDouble(temp);
-				tempd = tempd / (UInt16.MaxValue/80);
+				tempd = tempd / (UInt16.MaxValue / 80);
 				returnArray[returnArrayIndex++] = tempd;
 				Console.WriteLine("seb: " + tempd);
 
@@ -79,17 +79,17 @@ namespace WindowsFormsApplication1
 				firstBytePosition = 11;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
-				temp = temp | (uint)sentByteArray[firstBytePosition+1];
+				temp = temp | (uint)sentByteArray[firstBytePosition + 1];
 
 				tempd = Convert.ToDouble(temp);
-				tempd = tempd / (UInt16.MaxValue/500) - 250;
+				tempd = tempd / (UInt16.MaxValue / 500) - 250;
 				returnArray[returnArrayIndex++] = tempd;
 
 				//////////////////////////////////////13,14
 				firstBytePosition = 13;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
-				temp = temp | (uint)sentByteArray[firstBytePosition+1];
+				temp = temp | (uint)sentByteArray[firstBytePosition + 1];
 
 				tempd = Convert.ToDouble(temp);
 				tempd = tempd / (UInt16.MaxValue / 500) - 250;
@@ -99,7 +99,7 @@ namespace WindowsFormsApplication1
 				firstBytePosition = 15;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
-				temp = temp | (uint)sentByteArray[firstBytePosition+1];
+				temp = temp | (uint)sentByteArray[firstBytePosition + 1];
 
 				tempd = Convert.ToDouble(temp);
 				tempd = tempd / (UInt16.MaxValue / 500) - 250;
@@ -109,7 +109,7 @@ namespace WindowsFormsApplication1
 				firstBytePosition = 17;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
-				temp = temp | (uint)sentByteArray[firstBytePosition+1];
+				temp = temp | (uint)sentByteArray[firstBytePosition + 1];
 
 				tempd = Convert.ToDouble(temp);
 				tempd = tempd / (UInt16.MaxValue / 8200) - 200;
@@ -119,17 +119,17 @@ namespace WindowsFormsApplication1
 				firstBytePosition = 19;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
-				temp = temp | (uint)sentByteArray[firstBytePosition+1];
+				temp = temp | (uint)sentByteArray[firstBytePosition + 1];
 
 				tempd = Convert.ToDouble(temp);
 				tempd = tempd / (UInt16.MaxValue / 80);
 				returnArray[returnArrayIndex++] = tempd;
-					
+
 				//////////////////////////////////////21,22 euler szögek
 				firstBytePosition = 21;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
-				temp = temp | (uint)sentByteArray[firstBytePosition+1];
+				temp = temp | (uint)sentByteArray[firstBytePosition + 1];
 
 				tempd = Convert.ToDouble(temp);
 				tempd = tempd / (UInt16.MaxValue / 360) - 180;
@@ -139,7 +139,7 @@ namespace WindowsFormsApplication1
 				firstBytePosition = 23;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
-				temp = temp | (uint)sentByteArray[firstBytePosition+1];
+				temp = temp | (uint)sentByteArray[firstBytePosition + 1];
 
 				tempd = Convert.ToDouble(temp);
 				tempd = tempd / (UInt16.MaxValue / 360) - 180;
@@ -149,7 +149,7 @@ namespace WindowsFormsApplication1
 				firstBytePosition = 25;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
-				temp = temp | (uint)sentByteArray[firstBytePosition+1];
+				temp = temp | (uint)sentByteArray[firstBytePosition + 1];
 
 				tempd = Convert.ToDouble(temp);
 				tempd = tempd / (UInt16.MaxValue / 360) - 180;
@@ -159,7 +159,7 @@ namespace WindowsFormsApplication1
 				firstBytePosition = 27;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
-				temp = temp | (uint)sentByteArray[firstBytePosition+1];
+				temp = temp | (uint)sentByteArray[firstBytePosition + 1];
 
 				tempd = Convert.ToDouble(temp);
 				tempd = tempd / (UInt16.MaxValue);
@@ -170,7 +170,7 @@ namespace WindowsFormsApplication1
 				firstBytePosition = 29;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
-				temp = temp | (uint)sentByteArray[firstBytePosition+1];
+				temp = temp | (uint)sentByteArray[firstBytePosition + 1];
 
 				tempd = Convert.ToDouble(temp);
 				tempd = tempd / (UInt16.MaxValue);
@@ -180,7 +180,7 @@ namespace WindowsFormsApplication1
 				firstBytePosition = 31;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
-				temp = temp | (uint)sentByteArray[firstBytePosition+1];
+				temp = temp | (uint)sentByteArray[firstBytePosition + 1];
 
 				tempd = Convert.ToDouble(temp);
 				tempd = tempd / (UInt16.MaxValue);
@@ -190,7 +190,7 @@ namespace WindowsFormsApplication1
 				firstBytePosition = 33;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
-				temp = temp | (uint)sentByteArray[firstBytePosition+1];
+				temp = temp | (uint)sentByteArray[firstBytePosition + 1];
 
 				tempd = Convert.ToDouble(temp);
 				tempd = tempd / (UInt16.MaxValue);
@@ -200,19 +200,19 @@ namespace WindowsFormsApplication1
 				firstBytePosition = 35;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
-				temp = temp | (uint)sentByteArray[firstBytePosition+1];
+				temp = temp | (uint)sentByteArray[firstBytePosition + 1];
 
 				tempd = Convert.ToDouble(temp);
 				returnArray[returnArrayIndex++] = tempd;
 
-				
+
 				////////////////////////////////////////37,38,39,40 smart_gps->POSLLH.lon
 				firstBytePosition = 37;
 				uint lon = 0;
 				lon = lon | (uint)sentByteArray[firstBytePosition] << 24;
-				lon = lon | (uint)sentByteArray[firstBytePosition+1] << 16;
-				lon = lon | (uint)sentByteArray[firstBytePosition+2] << 8;
-				lon = lon | (uint)sentByteArray[firstBytePosition+3];
+				lon = lon | (uint)sentByteArray[firstBytePosition + 1] << 16;
+				lon = lon | (uint)sentByteArray[firstBytePosition + 2] << 8;
+				lon = lon | (uint)sentByteArray[firstBytePosition + 3];
 
 				double lond = Convert.ToDouble(lon);
 				lond = lond / (Int32.MaxValue / 180) - 90;
@@ -253,7 +253,7 @@ namespace WindowsFormsApplication1
 				temp = temp | (uint)sentByteArray[firstBytePosition + 1];
 
 				tempd = Convert.ToDouble(temp);
-				tempd = tempd / (UInt16.MaxValue/5) - 2.5;
+				tempd = tempd / (UInt16.MaxValue / 5) - 2.5;
 				returnArray[returnArrayIndex++] = tempd;
 
 				////////////////////////////////////////51,52 gyorsulás
@@ -343,6 +343,54 @@ namespace WindowsFormsApplication1
 				tempd = Convert.ToDouble(temp);
 				returnArray[returnArrayIndex++] = tempd;
 			}
+			return returnArray;
+		}
+
+
+		public static byte[] Code(double[] doubleArray, int n)
+		{
+			const int SIZE = 80;
+
+			byte[] returnArray = new byte[SIZE];
+
+			for (int i = 0; i < SIZE; i++)
+			{
+				returnArray[i] =0x01;
+			}
+
+			int returnArrayIndex = 0;
+
+			UInt16 calculatedCheckSum = 0;
+			returnArray[0] = (byte)'G';
+			returnArray[1] = (byte)'P';
+			returnArray[2] = (byte)'S';
+			returnArray[3] = (byte) n;
+
+			for (int i = 1; i < n+1; i++)
+			{
+
+				double a = doubleArray[i];
+
+				a = a * (Int32.MaxValue / 360) + 180;
+
+				uint lon =(uint) Convert.ToUInt32(a);				
+
+				
+				returnArray[i*4] = (byte)(lon >> 24);
+				returnArray[i*4+1] = (byte)(lon >> 16);
+				returnArray[i*4+2] = (byte)(lon >> 8) ;
+				returnArray[i*4+3] = (byte)(lon >> 0);
+
+		}
+
+			//checksum számolás
+			for (int j = 0; j < SIZE - 2; j++)
+			{
+				calculatedCheckSum += returnArray[j];
+			}
+			returnArray[SIZE - 2] = (byte)(calculatedCheckSum >> 8);
+			returnArray[SIZE - 1] = (byte)(calculatedCheckSum >> 0);
+
 			return returnArray;
 		}
 	}
