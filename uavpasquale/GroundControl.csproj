@@ -101,7 +101,7 @@
       <DependentUpon>Compass.cs</DependentUpon>
     </Compile>
     <Compile Include="DataElement.cs" />
-    <Compile Include="Decode_serial.cs" />
+    <Compile Include="SerialUtil.cs" />
     <Compile Include="GMap.cs" />
     <Compile Include="Instruments.cs">
       <SubType>Form</SubType>

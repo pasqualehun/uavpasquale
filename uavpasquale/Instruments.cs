@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1
     {
 		public const int MAX_POINTS = 10;
 
-		Decode_serial decoder= new Decode_serial();
+		
 
 		const int SIZE = 75;
 
@@ -83,7 +83,7 @@ namespace WindowsFormsApplication1
 				
 				}
                                 
-			decodedFromA = decoder.Decode(receivedBytesA);
+			decodedFromA = SerialUtil.Decode(receivedBytesA);
 
 			lock (lockObj)
 			{
@@ -110,7 +110,7 @@ namespace WindowsFormsApplication1
 					MessageBox.Show("PortB bezárva", "Soros port hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				}
 
-			decodedFromB = decoder.Decode(receivedBytesB);
+			decodedFromB = SerialUtil.Decode(receivedBytesB);
 
 			lock (lockObj)
 			{
@@ -473,18 +473,21 @@ namespace WindowsFormsApplication1
 
 		private void button1_Click(object sender, EventArgs e)
 		{
+			double[] points = new double[80];
+			int i = 0;
+			points[i++] = plannedRoute.Points.Count;
+
+			foreach (var item in plannedRoute.Points)
+			{
+				points[i++] = item.Lat;
+				points[i++] = item.Lng;
+			}
+
 			Console.WriteLine(plannedRoute.Points.Count+"-------------------");
 			try
 			{
-				serialPort1.Write(plannedRoute.Points.Count.ToString());
-
-				foreach (var item in plannedRoute.Points)
-				{
-					Console.WriteLine(item.ToString());
-					serialPort1.Write(item.ToString());
-				}
-		
-					
+				serialPort1.Write(SerialUtil.Code(points,plannedRoute.Points.Count),0,80);
+			
 			}
 			catch (Exception ex)
 			{
@@ -493,11 +496,8 @@ namespace WindowsFormsApplication1
 
 			try
 			{
-				serialPort2.Write(plannedRoute.Points.Count.ToString());
-				foreach (var item in plannedRoute.Points)
-				{
-					serialPort2.Write(item.ToString());
-				}
+				serialPort2.Write(SerialUtil.Code(points,plannedRoute.Points.Count),0,80);
+				
 			}
 			catch (Exception ex)
 			{
