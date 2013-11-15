@@ -19,8 +19,6 @@ namespace WindowsFormsApplication1
     {
 		public const int MAX_POINTS = 10;
 
-		
-
 		const int SIZE = 75;
 
 		static byte[] receivedBytesA = new byte[SIZE];
@@ -35,13 +33,10 @@ namespace WindowsFormsApplication1
 
 		static object lockObj = new object();
 
-		
-
-
+	
         public Instruments()
         {
 			InitializeComponent();
-
 
 			addItemsToComboboxes();
 
@@ -53,121 +48,75 @@ namespace WindowsFormsApplication1
         }
 
 		public void addItemsToComboboxes()
-		{
-			// Nice methods to browse all available ports:
+		{			
 			string[] ports = SerialPort.GetPortNames();
-
-			// Add all port names to the combo box:
 			foreach (string port in ports)
 			{
 				comboBox1.Items.Add(port);
 				comboBox2.Items.Add(port);
 			}
-			comboBox1.Items.Add("Bezárás");
-			comboBox2.Items.Add("Bezárás");
+
+            object [] baudRates = {1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200};
+            baudCombo1.Items.AddRange(baudRates);
+            baudCombo2.Items.AddRange(baudRates);
+            baudCombo1.SelectedIndex = baudCombo2.SelectedIndex = 3;
+            comboBox1.SelectedIndex = 0;
+            comboBox2.SelectedIndex = 1;
+
 		}
         
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-        
-        
-            if(serialPort1.IsOpen)
-				try
-				{
-					(sender as System.IO.Ports.SerialPort).Read(receivedBytesA, 0, SIZE);
-				}
-				catch (Exception)
-				{
-					serialPort1.Close();
-					MessageBox.Show("PortA bezárva", "Soros port hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				
-				}
-                                
-			decodedFromA = SerialUtil.Decode(receivedBytesA);
+            if (serialPort1.IsOpen)
+            {
+                try
+                {
+                    (sender as System.IO.Ports.SerialPort).Read(receivedBytesA, 0, SIZE);
+                }
+                catch (Exception)
+                {
+                    serialPort1.Close();
+                }
 
-			lock (lockObj)
-			{
-				for (int i = 0; i < decodedFromA.Length; i++)
-				{
-					elements[i].AddA(decodedFromA[i]);
-					elements[i].Calculate();
-				}
-			}
+                decodedFromA = SerialUtil.Decode(receivedBytesA);
+
+                lock (lockObj)
+                {
+                    for (int i = 0; i < decodedFromA.Length; i++)
+                    {
+                        elements[i].AddA(decodedFromA[i]);
+                        elements[i].Calculate();
+                    }
+                }
+            }
         }
 
 		private void serialPort2_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
 		{
+            if (serialPort2.IsOpen)
+            {
+                try
+                {
+                    (sender as System.IO.Ports.SerialPort).Read(receivedBytesB, 0, SIZE);
+                }
+                catch (Exception)
+                {
+                    serialPort2.Close();
+                }
 
+                decodedFromB = SerialUtil.Decode(receivedBytesB);
 
-			if (serialPort2.IsOpen)
-				try
-				{
-					(sender as System.IO.Ports.SerialPort).Read(receivedBytesB, 0, SIZE);
-				}
-				catch (Exception)
-				{
-					serialPort2.Close();
-					MessageBox.Show("PortB bezárva", "Soros port hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				}
-
-			decodedFromB = SerialUtil.Decode(receivedBytesB);
-
-			lock (lockObj)
-			{
-				for (int i = 0; i < decodedFromB.Length; i++)
-				{
-					elements[i].AddB(decodedFromB[i]);
-					elements[i].Calculate();
-				}
-			}
+                lock (lockObj)
+                {
+                    for (int i = 0; i < decodedFromB.Length; i++)
+                    {
+                        elements[i].AddB(decodedFromB[i]);
+                        elements[i].Calculate();
+                    }
+                }
+            }
 
 		}
-
-		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			if (serialPort1.IsOpen)
-				serialPort1.Close();
-			if (comboBox1.SelectedItem.ToString() != "Bezárás")
-				serialPort1.PortName = comboBox1.SelectedItem.ToString();
-			else
-				return;
-
-
-			// try to open the selected port:
-			try
-			{
-				serialPort1.Open();
-				serialPort1.WriteTimeout = 500;
-			}
-			// give a message, if the port is not available:
-			catch
-			{
-				MessageBox.Show("A " + serialPort1.PortName + "-t nem lehet megnyitni az A-n ", "Soros port hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				comboBox1.SelectedText = "";
-			}
-		}
-
-		private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			if (serialPort2.IsOpen)
-				serialPort2.Close();
-			serialPort2.PortName = comboBox2.SelectedItem.ToString();
-
-
-			// try to open the selected port:
-			try
-			{
-				serialPort2.Open();
-				serialPort2.WriteTimeout = 500;
-			}
-			// give a message, if the port is not available:
-			catch
-			{
-				MessageBox.Show("A " + serialPort2.PortName + "-t nem lehet megnyitni a B-n ", "Soros port hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				comboBox1.SelectedText = "";
-			}
-		}
-
 
 		public void UpdateView()
 		{
@@ -175,39 +124,30 @@ namespace WindowsFormsApplication1
 			{
 				Thread.Sleep(1000);
 
-				if (serialPort1.IsOpen && decodedFromA[14] != 0)//&& serialPort2.IsOpen)
+				if (serialPort1.IsOpen || serialPort2.IsOpen)
 				{
 					AddCoordinate(new PointLatLng(decodedFromA[14], decodedFromA[15]));
 
+					view1.getReference(ref elements);
 
-					view1.Update(decodedFromA,decodedFromB);
-
-					view1.Update(ref elements);
-
-					//speed1.UpdateSpeed((float)decodedFromA[75]);
-
-					speed1.UpdateSpeed((float)elements[7].GetData());
-
-					vario1.UpdateClimb((float)decodedFromA[13]);
-					altimeter1.UpdateAlt((float)decodedFromA[18]);
-					compass1.UpdateHeading((float)decodedFromA[0]);
 				
+					speed1.UpdateSpeed((float)elements[2].GetData());
+                    vario1.UpdateClimb((float)elements[1].GetData());
+                    altimeter1.UpdateAlt((float)elements[18].GetData());
+					compass1.UpdateHeading((float)decodedFromA[0]);
 
-					vario1.Invalidate();
-
-					altimeter1.Invalidate();
-					speed1.Invalidate();
-					compass1.Invalidate();
-					view1.Invalidate();
+                    invalidateViews();				
 				}
 			}
 		}
-
-
-
-
-
-
+        void invalidateViews()
+        {
+            vario1.Invalidate();
+            altimeter1.Invalidate();
+            speed1.Invalidate();
+            compass1.Invalidate();
+            view1.Invalidate(); 
+        }
 		static List<PointLatLng> points = new List<PointLatLng>();
 		
 		static GMapRoute flightRoute = new GMapRoute("");
@@ -253,63 +193,20 @@ namespace WindowsFormsApplication1
 
 			routeOverlay2.Routes.Add(plannedRoute);
 
-			gmap.Overlays.Add(routeOverlay2);
-
-
-
-
-			points.Add(new PointLatLng(47.471154, 19.062481));
-			points.Add(new PointLatLng(47.473214, 19.059091));
-			points.Add(new PointLatLng(47.473925, 19.059219));
-			points.Add(new PointLatLng(47.474505, 19.05952));
-			points.Add(new PointLatLng(47.47436, 19.058876));
-			points.Add(new PointLatLng(47.47449, 19.058533));
-			points.Add(new PointLatLng(47.47449, 19.058533));
-			points.Add(new PointLatLng(47.475172, 19.056151));
-			points.Add(new PointLatLng(47.474867, 19.055378));
-			points.Add(new PointLatLng(47.474273, 19.054241));
-			points.Add(new PointLatLng(47.473939, 19.053512));
-			points.Add(new PointLatLng(47.473606, 19.052761));
-			points.Add(new PointLatLng(47.473142, 19.052417));
-			points.Add(new PointLatLng(47.472764, 19.052482));
-			points.Add(new PointLatLng(47.470792, 19.052932));
-			points.Add(new PointLatLng(47.471154, 19.053512));
-			points.Add(new PointLatLng(47.472387, 19.055293));
-			points.Add(new PointLatLng(47.473258, 19.056516));
-			points.Add(new PointLatLng(47.473838, 19.056988));
-
-
-			
+			gmap.Overlays.Add(routeOverlay2);			
 		}
 
-
-
-		int aa = 0;	
 		void AddCoordinate(PointLatLng a)
-		{
-			if (aa > 10)
-				aa = 0;
-			//flightRoute.Points.Add(points.ElementAt(aa));
+		{			
 			flightRoute.Points.Add(a);
-
 			gmap.UpdateRouteLocalPosition(flightRoute);
-
-			//planeMarker.Position = points.ElementAt(aa);
 			planeMarker.Position = a;
-
 			gmap.Invalidate();
-			aa++;
 		}
 
 		public class GMapMarkerImage : GMap.NET.WindowsForms.GMapMarker
 		{
 			private Image img;
-
-
-			/// <summary>
-			/// Constructor
-			/// </summary>
-			/// <param name="p">The position of the marker</param>
 			public GMapMarkerImage(PointLatLng p, Image image)
 				: base(p)
 			{
@@ -323,11 +220,7 @@ namespace WindowsFormsApplication1
 
 			public override void OnRender(Graphics g)
 			{
-											
-				//TODO rotate pklane
 				g.DrawImage(RotateImage(img, (float)decodedFromA[0]), LocalPosition.X, LocalPosition.Y, Size.Height, Size.Width);
-				//g.DrawImage(img, LocalPosition.X, LocalPosition.Y, Size.Height, Size.Width);			
-				
 				base.OnRender(g);
 			}
 		}
@@ -390,8 +283,6 @@ namespace WindowsFormsApplication1
 		private bool isDraggingMarker;
 
 
-
-		
 		private void gmap_plan_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
 
@@ -412,12 +303,6 @@ namespace WindowsFormsApplication1
 				gmap_plan.UpdateRouteLocalPosition(plannedRoute);
 			}
 		}
-
-		private void calculation2_Load(object sender, EventArgs e)
-		{
-
-		}
-
 		int indexOfCurrentPoint;
 
 		private void gmap_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -471,7 +356,7 @@ namespace WindowsFormsApplication1
 			}
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void uploadButton1_Click(object sender, EventArgs e)
 		{
 			double[] points = new double[80];
 			int i = 0;
@@ -483,26 +368,17 @@ namespace WindowsFormsApplication1
 				points[i++] = item.Lng;
 			}
 
-			Console.WriteLine(plannedRoute.Points.Count+"-------------------");
 			try
 			{
 				serialPort1.Write(SerialUtil.Code(points,plannedRoute.Points.Count),0,80);
-			
+                serialPort2.Write(SerialUtil.Code(points, plannedRoute.Points.Count), 0, 80);			
 			}
-			catch (Exception ex)
-			{
-				Console.WriteLine("serial1   " +ex.Message);
-			}
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
-			try
-			{
-				serialPort2.Write(SerialUtil.Code(points,plannedRoute.Points.Count),0,80);
-				
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine("serial2   " + ex.Message);
-			}
+			
 		}
 
 		private void gmap_plan_MouseClick(object sender, MouseEventArgs e)
@@ -522,5 +398,65 @@ namespace WindowsFormsApplication1
 				calculation2.Invalidate();
 			}
 		}
+
+        private void baudCombo1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            baudCombo2.SelectedIndex = baudCombo1.SelectedIndex;
+        }
+
+        private void connectButton_Click(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen || serialPort1.IsOpen)
+            {
+                serialPort1.Close();
+                serialPort2.Close();
+                enableComboboxes(true);
+            }
+            else
+            {
+                try
+                {
+                    serialPort1.PortName = comboBox1.SelectedItem.ToString();
+                    serialPort1.WriteTimeout = 500;
+                    serialPort1.BaudRate = (int)baudCombo1.SelectedItem;
+                    serialPort1.Open();
+
+                    serialPort2.PortName = comboBox2.SelectedItem.ToString();
+                    serialPort2.WriteTimeout = 500;
+                    serialPort2.BaudRate = (int)baudCombo2.SelectedItem;
+                    serialPort2.Open();
+                    enableComboboxes(false);
+                }
+                // give a message, if the port is not available:
+                catch (NullReferenceException eex)
+                {
+                    MessageBox.Show("Nincs jó érték kiválasztva ", "Soros port hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString(),"Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }            
+        }
+
+        void enableComboboxes(bool flag)
+        {
+            if (flag)
+            {
+                comboBox1.Enabled   = true;
+                comboBox2.Enabled   = true;
+                baudCombo1.Enabled  = true;
+                baudCombo2.Enabled  = true;
+                connectButton.Text = "Kapcsolódás";
+            }
+            else
+            {
+                comboBox1.Enabled   = false;
+                comboBox2.Enabled   = false;
+                baudCombo1.Enabled  = false;
+                baudCombo2.Enabled  = false;
+                connectButton.Text = "Lekapcsolódás";
+            }
+        }
     }
 }

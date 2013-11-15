@@ -149,17 +149,7 @@ namespace WindowsFormsApplication1
 			return (float)Math.PI / 180 * angle;
 		}
 
-
-		public void Update(double[] a, double[] b)
-		{
-
-			arrayA = a;
-			arrayB = b;
-			
-		}
-
-
-		public void Update(ref WindowsFormsApplication1.DataElement[] elements)
+		public void getReference(ref WindowsFormsApplication1.DataElement[] elements)
 		{
 			this.elements = elements;
 		}

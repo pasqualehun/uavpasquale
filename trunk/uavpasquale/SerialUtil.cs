@@ -36,7 +36,7 @@ namespace WindowsFormsApplication1
 			{
 
 				int firstBytePosition = 3;
-				///////////0 u//1 u//2 t//3 ido1//4 ido2//5 ido3//6 ido4
+				//0/////////////////////////////////////////////3,4,5,6 idő
 
 				uint ido = (uint)sentByteArray[firstBytePosition] << 24;
 				ido = ido | (uint)sentByteArray[firstBytePosition + 1] << 16;
@@ -44,16 +44,16 @@ namespace WindowsFormsApplication1
 				ido = ido | (uint)sentByteArray[firstBytePosition + 3];
 
 				double idod = Convert.ToDouble(ido) / 10000;
-				returnArray[returnArrayIndex++] = returnArray[1] = idod;
+				returnArray[returnArrayIndex++]= idod;
 
-				Console.WriteLine(idod);
+                Console.WriteLine(returnArray[returnArrayIndex-1]);
 
 
 				uint temp = 0;
 				double tempd = 0;
 
 
-				//////////////////////////////////////7,8 magasság parancs
+				//1////////////////////////////////////7,8 magasság parancs
 				firstBytePosition = 7;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -64,7 +64,7 @@ namespace WindowsFormsApplication1
 				returnArray[returnArrayIndex++] = tempd;
 				Console.WriteLine("mag: " + tempd);
 
-				//////////////////////////////////////9,10 sebesség parancs
+				//2////////////////////////////////////9,10 sebesség parancs
 				firstBytePosition = 9;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -75,7 +75,7 @@ namespace WindowsFormsApplication1
 				returnArray[returnArrayIndex++] = tempd;
 				Console.WriteLine("seb: " + tempd);
 
-				//////////////////////////////////////11,12
+				//3////////////////////////////////////11,12
 				firstBytePosition = 11;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -85,7 +85,7 @@ namespace WindowsFormsApplication1
 				tempd = tempd / (UInt16.MaxValue / 500) - 250;
 				returnArray[returnArrayIndex++] = tempd;
 
-				//////////////////////////////////////13,14
+				//4////////////////////////////////////13,14
 				firstBytePosition = 13;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -95,7 +95,7 @@ namespace WindowsFormsApplication1
 				tempd = tempd / (UInt16.MaxValue / 500) - 250;
 				returnArray[returnArrayIndex++] = tempd;
 
-				//////////////////////////////////////15,16
+				//5////////////////////////////////////15,16
 				firstBytePosition = 15;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -105,7 +105,7 @@ namespace WindowsFormsApplication1
 				tempd = tempd / (UInt16.MaxValue / 500) - 250;
 				returnArray[returnArrayIndex++] = tempd;
 
-				//////////////////////////////////////17,18 nyomás alapú magasság
+				//6////////////////////////////////////17,18 nyomás alapú magasság
 				firstBytePosition = 17;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -115,7 +115,7 @@ namespace WindowsFormsApplication1
 				tempd = tempd / (UInt16.MaxValue / 8200) - 200;
 				returnArray[returnArrayIndex++] = tempd;
 
-				//////////////////////////////////////19,20
+				//7////////////////////////////////////19,20
 				firstBytePosition = 19;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -125,7 +125,7 @@ namespace WindowsFormsApplication1
 				tempd = tempd / (UInt16.MaxValue / 80);
 				returnArray[returnArrayIndex++] = tempd;
 
-				//////////////////////////////////////21,22 euler szögek
+				//8////////////////////////////////////21,22 euler szögek
 				firstBytePosition = 21;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -135,7 +135,7 @@ namespace WindowsFormsApplication1
 				tempd = tempd / (UInt16.MaxValue / 360) - 180;
 				returnArray[returnArrayIndex++] = tempd;
 
-				//////////////////////////////////////23,24
+				//9////////////////////////////////////23,24
 				firstBytePosition = 23;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -145,7 +145,7 @@ namespace WindowsFormsApplication1
 				tempd = tempd / (UInt16.MaxValue / 360) - 180;
 				returnArray[returnArrayIndex++] = tempd;
 
-				//////////////////////////////////////25,26
+				//10////////////////////////////////////25,26
 				firstBytePosition = 25;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -155,7 +155,7 @@ namespace WindowsFormsApplication1
 				tempd = tempd / (UInt16.MaxValue / 360) - 180;
 				returnArray[returnArrayIndex++] = tempd;
 
-				//////////////////////////////////////27,28 normalizált kormánykitérítések
+				//11////////////////////////////////////27,28 normalizált kormánykitérítések
 				firstBytePosition = 27;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -166,7 +166,7 @@ namespace WindowsFormsApplication1
 				returnArray[returnArrayIndex++] = tempd;
 
 
-				////////////////////////////////////////29,30
+				//12//////////////////////////////////////29,30
 				firstBytePosition = 29;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -176,7 +176,7 @@ namespace WindowsFormsApplication1
 				tempd = tempd / (UInt16.MaxValue);
 				returnArray[returnArrayIndex++] = tempd;
 
-				////////////////////////////////////////31,32
+				//13//////////////////////////////////////31,32
 				firstBytePosition = 31;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -186,7 +186,7 @@ namespace WindowsFormsApplication1
 				tempd = tempd / (UInt16.MaxValue);
 				returnArray[returnArrayIndex++] = tempd;
 
-				////////////////////////////////////////33,34 normalizált gázkarállás
+				//14//////////////////////////////////////33,34 normalizált gázkarállás
 				firstBytePosition = 33;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -196,7 +196,7 @@ namespace WindowsFormsApplication1
 				tempd = tempd / (UInt16.MaxValue);
 				returnArray[returnArrayIndex++] = tempd;
 
-				////////////////////////////////////////35,36 GPS egészség
+				//15//////////////////////////////////////35,36 GPS egészség
 				firstBytePosition = 35;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -206,7 +206,7 @@ namespace WindowsFormsApplication1
 				returnArray[returnArrayIndex++] = tempd;
 
 
-				////////////////////////////////////////37,38,39,40 smart_gps->POSLLH.lon
+				//16//////////////////////////////////////37,38,39,40 smart_gps->POSLLH.lon
 				firstBytePosition = 37;
 				uint lon = 0;
 				lon = lon | (uint)sentByteArray[firstBytePosition] << 24;
@@ -220,7 +220,7 @@ namespace WindowsFormsApplication1
 				Console.WriteLine("lon: " + lond);
 
 
-				////////////////////////////////////////41,42,43,44 smart_gps->POSLLH.lat
+				//17//////////////////////////////////////41,42,43,44 smart_gps->POSLLH.lat
 				firstBytePosition = 41;
 				uint lat = 0;
 				lat = lat | (uint)sentByteArray[firstBytePosition] << 24;
@@ -233,7 +233,7 @@ namespace WindowsFormsApplication1
 				returnArray[returnArrayIndex++] = latd;
 				Console.WriteLine("lat: " + latd);
 
-				////////////////////////////////////////45,46,47,48 smart_gps->POSLLH.height
+				//18//////////////////////////////////////45,46,47,48 smart_gps->POSLLH.height
 				firstBytePosition = 45;
 				uint height = 0;
 				height = height | (uint)sentByteArray[firstBytePosition] << 24;
@@ -246,7 +246,7 @@ namespace WindowsFormsApplication1
 				returnArray[returnArrayIndex++] = heightd;
 				Console.WriteLine("height: " + heightd);
 
-				////////////////////////////////////////49,50 gyorsulás
+				//19//////////////////////////////////////49,50 gyorsulás
 				firstBytePosition = 49;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -256,7 +256,7 @@ namespace WindowsFormsApplication1
 				tempd = tempd / (UInt16.MaxValue / 5) - 2.5;
 				returnArray[returnArrayIndex++] = tempd;
 
-				////////////////////////////////////////51,52 gyorsulás
+				//20//////////////////////////////////////51,52 gyorsulás
 				firstBytePosition = 49;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -266,7 +266,7 @@ namespace WindowsFormsApplication1
 				tempd = tempd / (UInt16.MaxValue / 5) - 2.5;
 				returnArray[returnArrayIndex++] = tempd;
 
-				////////////////////////////////////////53,54 gyorsulás
+				//21//////////////////////////////////////53,54 gyorsulás
 				firstBytePosition = 53;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -276,7 +276,7 @@ namespace WindowsFormsApplication1
 				tempd = tempd / (UInt16.MaxValue / 5) - 2.5;
 				returnArray[returnArrayIndex++] = tempd;
 
-				////////////////////////////////////////55,56 
+				//22//////////////////////////////////////55,56 
 				firstBytePosition = 55;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -286,7 +286,7 @@ namespace WindowsFormsApplication1
 				tempd = tempd / (UInt16.MaxValue / 4) - 2;
 				returnArray[returnArrayIndex++] = tempd;
 
-				////////////////////////////////////////57,58
+				//23//////////////////////////////////////57,58
 				firstBytePosition = 57;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -296,7 +296,7 @@ namespace WindowsFormsApplication1
 				tempd = tempd / (UInt16.MaxValue / 4) - 2;
 				returnArray[returnArrayIndex++] = tempd;
 
-				////////////////////////////////////////59,60
+				//24//////////////////////////////////////59,60
 				firstBytePosition = 59;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -306,7 +306,7 @@ namespace WindowsFormsApplication1
 				tempd = tempd / (UInt16.MaxValue / 4) - 2;
 				returnArray[returnArrayIndex++] = tempd;
 
-				////////////////////////////////////////59,60
+				//25//////////////////////////////////////59,60
 				firstBytePosition = 59;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -316,7 +316,7 @@ namespace WindowsFormsApplication1
 				tempd = tempd / (UInt16.MaxValue / 4) - 2;
 				returnArray[returnArrayIndex++] = tempd;
 
-				////////////////////////////////////////61,62 flightmode
+				//26//////////////////////////////////////61,62 flightmode
 				firstBytePosition = 61;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -325,7 +325,7 @@ namespace WindowsFormsApplication1
 				tempd = Convert.ToDouble(temp);
 				returnArray[returnArrayIndex++] = tempd;
 
-				////////////////////////////////////////63 köv pont
+				//27//////////////////////////////////////63 köv pont
 				firstBytePosition = 63;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
@@ -334,7 +334,7 @@ namespace WindowsFormsApplication1
 				tempd = Convert.ToDouble(temp);
 				returnArray[returnArrayIndex++] = tempd;
 
-				////////////////////////////////////////71 EKF
+				//28//////////////////////////////////////71 EKF
 				firstBytePosition = 71;
 				temp = 0;
 				temp = temp | (uint)sentByteArray[firstBytePosition] << 8;
