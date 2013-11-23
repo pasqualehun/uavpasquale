@@ -80,6 +80,9 @@ namespace WindowsFormsApplication1
 
                 decodedFromA = SerialUtil.Decode(receivedBytesA);
 
+				writeToTerminalA(receivedBytesA);
+				
+
                 lock (lockObj)
                 {
                     for (int i = 0; i < decodedFromA.Length; i++)
@@ -105,6 +108,8 @@ namespace WindowsFormsApplication1
                 }
 
                 decodedFromB = SerialUtil.Decode(receivedBytesB);
+
+				writeToTerminalB(receivedBytesB);
 
                 lock (lockObj)
                 {
@@ -136,7 +141,7 @@ namespace WindowsFormsApplication1
                     altimeter1.UpdateAlt((float)elements[18].GetData());
 					compass1.UpdateHeading((float)decodedFromA[0]);
 
-                    invalidateViews();				
+					invalidateViews();				
 				}
 			}
 		}
@@ -148,6 +153,40 @@ namespace WindowsFormsApplication1
             compass1.Invalidate();
             view1.Invalidate(); 
         }
+
+		void writeToTerminalA(byte[] array)
+		{
+			String returnArray = "";
+
+			foreach (var item in array)
+			{
+				returnArray += Convert.ToByte(item) + "  ";
+			}
+
+			if (InvokeRequired)
+			{
+				this.BeginInvoke(new Action<byte[]>(writeToTerminalA), new object[] { array });
+				return;
+			}
+			textBox1.Text = returnArray;			
+		}
+
+		void writeToTerminalB(byte[] array)
+		{
+			String returnArray = "";
+
+			foreach (var item in array)
+			{
+				returnArray += Convert.ToByte(item) + "  ";
+			}
+
+			if (InvokeRequired)
+			{
+				this.BeginInvoke(new Action<byte[]>(writeToTerminalB), new object[] { array });
+				return;
+			}
+			textBox2.Text = returnArray;
+		}
 		static List<PointLatLng> points = new List<PointLatLng>();
 		
 		static GMapRoute flightRoute = new GMapRoute("");
@@ -458,5 +497,6 @@ namespace WindowsFormsApplication1
                 connectButton.Text = "Lekapcsolódás";
             }
         }
+
     }
 }
