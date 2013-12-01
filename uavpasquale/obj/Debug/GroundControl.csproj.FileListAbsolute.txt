@@ -140,3 +140,17 @@ C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\bin\Debug\GroundC
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\GroundControl.exe
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\GroundControl.pdb
 C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\GroundControl.csproj.GenerateResource.Cache
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\bin\Debug\GroundControl.exe
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\bin\Debug\GroundControl.pdb
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\bin\Debug\GMap.NET.Core.dll
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\bin\Debug\GMap.NET.WindowsForms.dll
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\GroundControl.csprojResolveAssemblyReference.cache
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.Altimeter.resources
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.Compass.resources
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.Instruments.resources
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\GroundControl.Properties.Resources.resources
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.Speed.resources
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.Vario.resources
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\GroundControl.csproj.GenerateResource.Cache
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.ErrorOverview.resources
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.PlanView.resources

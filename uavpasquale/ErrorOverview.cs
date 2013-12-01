@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-	public partial class View : UserControl
+	public partial class ErrorOverview : UserControl
 	{
 		private PointF center;
 		private int size;
@@ -40,7 +40,7 @@ namespace WindowsFormsApplication1
 
 		
 
-		public View()
+		public ErrorOverview()
 		{
 			InitializeComponent();
 			DoubleBuffered = true;
