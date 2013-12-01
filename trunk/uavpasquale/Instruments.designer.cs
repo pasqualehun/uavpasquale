@@ -52,8 +52,8 @@
 			this.vario1 = new WindowsFormsApplication1.Vario();
 			this.altimeter1 = new WindowsFormsApplication1.Altimeter();
 			this.compass1 = new WindowsFormsApplication1.Compass();
-			this.calculation2 = new WindowsFormsApplication1.Calculation();
-			this.view1 = new WindowsFormsApplication1.View();
+			this.calculation2 = new WindowsFormsApplication1.PlanView();
+			this.view1 = new WindowsFormsApplication1.ErrorOverview();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tabPage3.SuspendLayout();
@@ -377,10 +377,10 @@
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabPage tabPage2;
-		private View view1;
+		private ErrorOverview view1;
 		private System.Windows.Forms.TabPage tabPage3;
 		private GMap.NET.WindowsForms.GMapControl gmap_plan;
-		private Calculation calculation2;
+		private PlanView calculation2;
 		private System.Windows.Forms.Button uploadButton1;
         private System.Windows.Forms.ComboBox baudCombo1;
         private System.Windows.Forms.ComboBox baudCombo2;

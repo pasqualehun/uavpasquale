@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-	partial class Calculation
+	partial class PlanView
 	{
 		/// <summary> 
 		/// Required designer variable.

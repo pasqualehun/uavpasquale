@@ -11,7 +11,7 @@ using GMap.NET.WindowsForms;
 
 namespace WindowsFormsApplication1
 {
-	public partial class Calculation : UserControl
+	public partial class PlanView : UserControl
 	{
 		private GMapRoute route;
 		private GMapControl gmap_plan;
@@ -22,7 +22,7 @@ namespace WindowsFormsApplication1
 		SolidBrush brushRed;
 
 
-		public Calculation()
+		public PlanView()
 		{
 			InitializeComponent();
 			DoubleBuffered = true;

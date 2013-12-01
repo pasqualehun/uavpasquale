@@ -88,11 +88,11 @@
     <Compile Include="Altimeter.designer.cs">
       <DependentUpon>Altimeter.cs</DependentUpon>
     </Compile>
-    <Compile Include="Calculation.cs">
+    <Compile Include="PlanView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Calculation.Designer.cs">
-      <DependentUpon>Calculation.cs</DependentUpon>
+    <Compile Include="PlanView.Designer.cs">
+      <DependentUpon>PlanView.cs</DependentUpon>
     </Compile>
     <Compile Include="Compass.cs">
       <SubType>UserControl</SubType>
@@ -102,7 +102,6 @@
     </Compile>
     <Compile Include="DataElement.cs" />
     <Compile Include="SerialUtil.cs" />
-    <Compile Include="GMap.cs" />
     <Compile Include="Instruments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,17 +110,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View.cs">
+    <Compile Include="ErrorOverview.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View.Designer.cs">
-      <DependentUpon>View.cs</DependentUpon>
+    <Compile Include="ErrorOverview.designer.cs">
+      <DependentUpon>ErrorOverview.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Altimeter.resx">
       <DependentUpon>Altimeter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calculation.resx">
-      <DependentUpon>Calculation.cs</DependentUpon>
+    <EmbeddedResource Include="PlanView.resx">
+      <DependentUpon>PlanView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Compass.resx">
       <DependentUpon>Compass.cs</DependentUpon>
@@ -145,11 +144,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="View.resx">
-      <DependentUpon>View.cs</DependentUpon>
+    <EmbeddedResource Include="ErrorOverview.resx">
+      <DependentUpon>ErrorOverview.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
