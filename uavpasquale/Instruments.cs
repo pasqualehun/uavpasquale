@@ -29,7 +29,7 @@ namespace WindowsFormsApplication1
 
 		static DataElement[] elements = new DataElement[29];
 
-		static String[] names = { "idő", "magassás", "sebesség", "smart_imu->gyr1[0]", "smart_imu->gyr1[1]", "smart_imu->gyr1[2]", "tmp_P", "sebesség", "ahrs->psi", "ahrs->theta", "ahrs->phi", "control_cm->dr", "control_cm->de", "control_cm->da", "control_cm->dthr", "GPS health", "lon", "lat", "height", "smart_imu->acc1[0]", "smart_imu->acc1[1]", "smart_imu->acc1[2]", "smart_imu->mag[0]", "smart_imu->mag[1]", "smart_imu->mag[2]", "flightmode", "nextwaypoint*10+lc", "state->ms", "checksum" };
+		static String[] names = { "idő", "magasság", "sebesség", "smart_imu->gyr1[0]", "smart_imu->gyr1[1]", "smart_imu->gyr1[2]", "tmp_P", "sebesség", "ahrs->psi", "ahrs->theta", "ahrs->phi", "control_cm->dr", "control_cm->de", "control_cm->da", "control_cm->dthr", "GPS health", "lon", "lat", "height", "smart_imu->acc1[0]", "smart_imu->acc1[1]", "smart_imu->acc1[2]", "smart_imu->mag[0]", "smart_imu->mag[1]", "smart_imu->mag[2]", "flightmode", "nextwaypoint*10+lc", "state->ms", "EKF status" };
 
 		static object lockObj = new object();
 
@@ -64,41 +64,49 @@ namespace WindowsFormsApplication1
             comboBox2.SelectedIndex = 1;
 
 		}
-        
+
+        private List<byte> pufferA = new List<byte>();
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             if (serialPort1.IsOpen)
             {
                 try
                 {
-                    (sender as System.IO.Ports.SerialPort).Read(receivedBytesA, 0, SIZE);
+                    byte[] data = new byte[serialPort1.BytesToRead];
+                    (sender as System.IO.Ports.SerialPort).Read(data, 0, data.Length);
+
+                    pufferA.AddRange(data);
+
+                    if (pufferA.Count > SIZE * 2)
+                    {
+                        int i = 0;
+                        for (; i < pufferA.Count; i++)
+                        {
+                            if (pufferA[i] == 'U' && pufferA[i + 1] == 'U' && pufferA[i + 2] == 'T')
+                            {
+                                int k = 0;
+                                for (int j = i; j < i + SIZE; j++)
+                                {
+                                    receivedBytesA[k++] = pufferA[i];
+                                    pufferA.RemoveAt(i);
+                                }
+                                decodedFromA = SerialUtil.Decode(receivedBytesA);
+                                updateElementsA();
+                                writeToTerminalA(receivedBytesA);
+                                pufferA.RemoveRange(0, i);
+                                break;
+                            }
+                        }
+                    }
                 }
                 catch (Exception)
                 {
-                    serialPort1.Close();
-                }
-
-                decodedFromA = SerialUtil.Decode(receivedBytesA);
-
-				writeToTerminalA(receivedBytesA);
-				
-
-                lock (lockObj)
-                {
-                    for (int i = 0; i < decodedFromA.Length; i++)
-                    {
-                        elements[i].AddA(decodedFromA[i]);
-                        elements[i].Calculate();
-                    }
+                    serialPort2.Close();
                 }
             }
         }
-        private Queue<byte> recievedData = new Queue<byte>();
 
-        private List<byte> puffer = new List<byte>();
-
-        static byte[] oneByteArray = new byte[1];
-
+        private List<byte> pufferB = new List<byte>();
 
 		private void serialPort2_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
 		{
@@ -106,33 +114,29 @@ namespace WindowsFormsApplication1
             {
                 try
                 {
-                //    byte[] data = new byte[serialPort2.BytesToRead];
-                //    serialPort2.Read(data, 0, data.Length);
-                //    data.ToList().ForEach(b => recievedData.Enqueue(b));
-
                     byte[] data = new byte[serialPort2.BytesToRead];
                     (sender as System.IO.Ports.SerialPort).Read(data, 0, data.Length);
 
-                    puffer.AddRange(data);
+                    pufferB.AddRange(data);
 
-                    if (puffer.Count > SIZE*2)
+                    if (pufferB.Count > SIZE * 2)
                     {
                         int i = 0;
-                        for (; i < puffer.Count; i++)
+                        for (; i < pufferB.Count; i++)
                         {
-                            if (puffer[i] == 'U' && puffer[i+1] == 'U' && puffer[i+2] == 'T')
+                            if (pufferB[i] == 'U' && pufferB[i + 1] == 'U' && pufferB[i + 2] == 'T')
                             {
                                 int k = 0;
                                 for (int j = i; j < i + SIZE; j++)
                                 {
-                                    receivedBytesB[k++] = puffer[i];
-                                    puffer.RemoveAt(i);
+                                    receivedBytesB[k++] = pufferB[i];
+                                    pufferB.RemoveAt(i);
                                 }
                                 decodedFromB = SerialUtil.Decode(receivedBytesB);
-
+                                updateElementsB();
                                 writeToTerminalB(receivedBytesB);
+                                pufferB.RemoveRange(0, i);
                                 break;
-
                             }
                         }
                     }
@@ -146,6 +150,18 @@ namespace WindowsFormsApplication1
 
 		}
 
+        void updateElementsA()
+        {
+            lock (lockObj)
+            {
+                for (int i = 0; i < decodedFromA.Length; i++)
+                {
+                    elements[i].AddA(decodedFromA[i]);
+                    elements[i].Calculate();
+                }
+            }
+        }
+
         void updateElementsB()
         {
             lock (lockObj)
@@ -158,46 +174,27 @@ namespace WindowsFormsApplication1
             }
         }
 
-        void processData()
-        {
-            // Determine if we have a "packet" in the queue
-            if (recievedData.Count > 75)
-            {
-                int i;
-                for ( i= 0; i < recievedData.Count; i++)
-                {
-                    if (recievedData.ElementAt(i).Equals((byte)'U') && recievedData.ElementAt(i + 1).Equals((byte)'U') && recievedData.ElementAt(i+2).Equals((byte)'T'))
-                    {
-                        break;
-                    }
-                }
-                var packet = Enumerable.Range(i, i+75).Select(a => recievedData.Dequeue());
-
-                var asd = recievedData.Select(a => recievedData.Dequeue());
-
-                receivedBytesB= asd.ToArray<byte>();
-                decodedFromB = SerialUtil.Decode(receivedBytesB);
-
-                writeToTerminalB(receivedBytesB);
-
-            }
-        }
-
-		public void UpdateView()
+        PointLatLng previousPoint = new PointLatLng(0.0, 0.0);
+        public void UpdateView()
 		{
 			while (true)
 			{
-				Thread.Sleep(1000);
+				Thread.Sleep(500);
 
 				if (serialPort1.IsOpen || serialPort2.IsOpen)
 				{
-					AddCoordinate(new PointLatLng(decodedFromA[14], decodedFromA[15]));
+                    PointLatLng point = new PointLatLng(elements[16].GetData(), elements[17].GetData());
+                    
+                    if(!previousPoint.Equals(point))
+                    {
+                        AddCoordinate(point);
+                        previousPoint=point;
+                    }
 
 					view1.getReference(ref elements);
-
 				
-					speed1.UpdateSpeed((float)elements[2].GetData());
-                    vario1.UpdateClimb((float)elements[1].GetData());
+					speed1.UpdateSpeed((float)elements[7].GetData());
+                    vario1.UpdateClimb((float)elements[18].getDelta()/2);
                     altimeter1.UpdateAlt((float)elements[18].GetData());
 					compass1.UpdateHeading((float)decodedFromA[0]);
 
@@ -218,9 +215,20 @@ namespace WindowsFormsApplication1
 		{
 			String returnArray = "";
 
-			foreach (var item in array)
+            String format = "";
+
+            if (hexCheckBox.Checked)
+            {
+                format = "{0:X2}";
+            }
+            else
+            {
+                format = "{0:D3}";
+            }
+
+			foreach (byte item in array)
 			{
-				returnArray += Convert.ToByte(item) + "  ";
+				returnArray +=  String.Format(format, item) + " ";
 			}
 
 			if (InvokeRequired)
@@ -228,16 +236,27 @@ namespace WindowsFormsApplication1
 				this.BeginInvoke(new Action<byte[]>(writeToTerminalA), new object[] { array });
 				return;
 			}
-			textBox1.Text = returnArray;			
+            richTextBox1.Text = returnArray;
 		}
 
 		void writeToTerminalB(byte[] array)
 		{
 			String returnArray = "";
 
-			foreach (var item in array)
+            String format = "";
+
+            if (hexCheckBox.Checked)
+            {
+                format = "{0:X2}";
+            }
+            else
+            {
+                format = "{0:D3}";
+            }
+
+			foreach (byte item in array)
 			{
-				returnArray += Convert.ToByte(item) + "  ";
+                returnArray += String.Format(format, item) + " ";
 			}
 
 			if (InvokeRequired)
@@ -245,7 +264,7 @@ namespace WindowsFormsApplication1
 				this.BeginInvoke(new Action<byte[]>(writeToTerminalB), new object[] { array });
 				return;
 			}
-			textBox2.Text = returnArray;
+            richTextBox2.Text = returnArray;
 		}
 		static List<PointLatLng> points = new List<PointLatLng>();
 		
@@ -457,7 +476,7 @@ namespace WindowsFormsApplication1
 
 		private void uploadButton1_Click(object sender, EventArgs e)
 		{
-			double[] points = new double[80];
+			double[] points = new double[86];
 			int i = 0;
 			points[i++] = plannedRoute.Points.Count;
 
@@ -469,8 +488,8 @@ namespace WindowsFormsApplication1
 
 			try
 			{
-				serialPort1.Write(SerialUtil.Code(points,plannedRoute.Points.Count),0,80);
-                serialPort2.Write(SerialUtil.Code(points, plannedRoute.Points.Count), 0, 80);			
+				serialPort1.Write(SerialUtil.Code(points,plannedRoute.Points.Count),0,86);
+                serialPort2.Write(SerialUtil.Code(points, plannedRoute.Points.Count), 0, 86);			
 			}
             catch (Exception ex)
             {

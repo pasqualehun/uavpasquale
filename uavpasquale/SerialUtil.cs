@@ -349,7 +349,7 @@ namespace WindowsFormsApplication1
 
 		public static byte[] Code(double[] doubleArray, int n)
 		{
-			const int SIZE = 80;
+			const int SIZE = 86;
 
 			byte[] returnArray = new byte[SIZE];
 
@@ -366,7 +366,7 @@ namespace WindowsFormsApplication1
 			returnArray[2] = (byte)'S';
 			returnArray[3] = (byte) n;
 
-			for (int i = 1; i < n+1; i++)
+			for (int i = 1; i < n * 2 + 1; i++)
 			{
 
 				double a = doubleArray[i];

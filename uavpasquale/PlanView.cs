@@ -59,7 +59,7 @@ namespace WindowsFormsApplication1
 				}
 				if (numberOfPoints > 9)
 				{
-					g.DrawString("Max. 9 pont kijelölése lehetséges", font, brushRed, 0F, 12 * numberOfPoints);
+					g.DrawString("Max. 10 pont kijelölése lehetséges", font, brushRed, 0F, 12 * numberOfPoints);
 				}
 			}	
 		}
