@@ -83,71 +83,20 @@ namespace WindowsFormsApplication1
 			e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
 			Draw(g);
-			DrawStatus(g);
 		}
-
-
-
-
-
 
 		private void Draw(Graphics g)
 		{
-
-			//g.DrawEllipse(new Pen(Color.Red, 3), position.X, position.Y, size, size);
-			//g.DrawString("Sebesség   " + arrayA[75].ToString().Substring(0, 5), font, brushBlue, 10F, 70F);
-			//g.DrawString("SebiB   " + arrayB[75].ToString(), font, brushBlack, 55F, 85F);
-
-
-			//g.DrawString("Vario  " + arrayA[13].ToString().Substring(0,3), font, brushBlue, 10F, 90F);
-			//g.DrawString("Vario Hiba!  " , new Font("Lucida Sans Unicode", 14), brushRed, 180F, 80F);
-
-			//g.DrawString("Vario  " + elements[13].GetData().ToString().Substring(0,3).ToString(), font, brushBlue, 10F, 140F);
-
 			for (int i = 0; i < 29; i++)
 			{
-				g.DrawString(elements[i].GetName(), font, brushBlue, 120F, i * 10F);
-				g.DrawString(elements[i].fromA[9].ToString() + " " , font, brushBlue, 260F, i * 10F);
-				g.DrawString(elements[i].faultA.ToString() + " " + elements[i].faultB.ToString(), font, brushBlue, 390F, i * 10F);
+				g.DrawString(elements[i].GetName(), font, brushBlue, 120F, i * 12F);
+				g.DrawString(String.Format("{0,15:0.00}" , elements[i].fromA[9]) + " " , font, brushBlue, 260F, i * 12F);
+                g.DrawString(String.Format("{0:D3}", elements[i].faultA) + "    " + String.Format("{0:D3}", elements[i].faultB), font, brushBlue, 450F, i * 12F);
 
 				
-				g.DrawString(elements[i].GetName() + "\t" + elements[i].fromB[9].ToString(), font, brushBlue, 450F, i * 10F);
+				g.DrawString(String.Format("{0,5:0.00}" , elements[i].fromB[9]), font, brushBlue, 350, i * 12F);
 			}
-
-
-		}
-
-		private void DrawStatus(Graphics g)
-		{
-			int i=(int)arrayA[0];
-			if (i >= 0 && i < error_imu_gps_ahrs.Length)
-				g.DrawString("GPS :	" + error_imu_gps_ahrs[i].ToString(), font, brushRed, 10F, 10F);
-			else
-				g.DrawString("GPS :	-", font, brushBlue, 10F, 10F);
-
-
-			if (i >= 0 && i < error_nav.Length)
-				g.DrawString("NAV :	" + error_nav[i].ToString(), font, brushRed, 10F, 20F);
-			else
-				g.DrawString("NAV :	-", font, brushBlue, 10F, 20F);
-
-			if (i >= 0 && i < error_cpu.Length)
-				g.DrawString("CPU :	" + error_cpu[i].ToString(), font, brushRed, 10F, 30F);
-			else
-				g.DrawString("CPU :	-", font, brushBlue, 10F, 30F);
-
-
-			if (i >= 0 && i < error_other_fcc.Length)
-				g.DrawString("Other :	" + error_other_fcc[i].ToString(), font, brushRed, 10F, 40F);
-			else
-				g.DrawString("Other :	-", font, brushBlue, 10F, 40F);
-		}
-		
-
-		public float CalculateRadian(float angle)
-		{
-			return (float)Math.PI / 180 * angle;
-		}
+       	}
 
 		public void getReference(ref WindowsFormsApplication1.DataElement[] elements)
 		{
