@@ -93,6 +93,12 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+        private Queue<byte> recievedData = new Queue<byte>();
+
+        private List<byte> puffer = new List<byte>();
+
+        static byte[] oneByteArray = new byte[1];
+
 
 		private void serialPort2_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
 		{
@@ -100,28 +106,82 @@ namespace WindowsFormsApplication1
             {
                 try
                 {
-                    (sender as System.IO.Ports.SerialPort).Read(receivedBytesB, 0, SIZE);
-                }
+                //    byte[] data = new byte[serialPort2.BytesToRead];
+                //    serialPort2.Read(data, 0, data.Length);
+                //    data.ToList().ForEach(b => recievedData.Enqueue(b));
+
+                    byte[] data = new byte[serialPort2.BytesToRead];
+                    (sender as System.IO.Ports.SerialPort).Read(data, 0, data.Length);
+
+                    puffer.AddRange(data);
+
+                    if (puffer.Count > SIZE*2)
+                    {
+                        int i = 0;
+                        for (; i < puffer.Count; i++)
+                        {
+                            if (puffer[i] == 'U' && puffer[i+1] == 'U' && puffer[i+2] == 'T')
+                            {
+                                int k = 0;
+                                for (int j = i; j < i + SIZE; j++)
+                                {
+                                    receivedBytesB[k++] = puffer[i];
+                                    puffer.RemoveAt(i);
+                                }
+                                decodedFromB = SerialUtil.Decode(receivedBytesB);
+
+                                writeToTerminalB(receivedBytesB);
+                                break;
+
+                            }
+                        }
+                    }
+                 }
+                
                 catch (Exception)
                 {
                     serialPort2.Close();
-                }
-
-                decodedFromB = SerialUtil.Decode(receivedBytesB);
-
-				writeToTerminalB(receivedBytesB);
-
-                lock (lockObj)
-                {
-                    for (int i = 0; i < decodedFromB.Length; i++)
-                    {
-                        elements[i].AddB(decodedFromB[i]);
-                        elements[i].Calculate();
-                    }
-                }
+                }                
             }
 
 		}
+
+        void updateElementsB()
+        {
+            lock (lockObj)
+            {
+                for (int i = 0; i < decodedFromB.Length; i++)
+                {
+                    elements[i].AddB(decodedFromB[i]);
+                    elements[i].Calculate();
+                }
+            }
+        }
+
+        void processData()
+        {
+            // Determine if we have a "packet" in the queue
+            if (recievedData.Count > 75)
+            {
+                int i;
+                for ( i= 0; i < recievedData.Count; i++)
+                {
+                    if (recievedData.ElementAt(i).Equals((byte)'U') && recievedData.ElementAt(i + 1).Equals((byte)'U') && recievedData.ElementAt(i+2).Equals((byte)'T'))
+                    {
+                        break;
+                    }
+                }
+                var packet = Enumerable.Range(i, i+75).Select(a => recievedData.Dequeue());
+
+                var asd = recievedData.Select(a => recievedData.Dequeue());
+
+                receivedBytesB= asd.ToArray<byte>();
+                decodedFromB = SerialUtil.Decode(receivedBytesB);
+
+                writeToTerminalB(receivedBytesB);
+
+            }
+        }
 
 		public void UpdateView()
 		{

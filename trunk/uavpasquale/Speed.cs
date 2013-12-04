@@ -28,9 +28,7 @@ namespace WindowsFormsApplication1
         {
             get { return currentSpeed; }
             set { currentSpeed = value; }
-        }
-        
-        
+        }        
 
 
         public Speed()
