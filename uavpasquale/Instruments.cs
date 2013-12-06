@@ -183,7 +183,7 @@ namespace WindowsFormsApplication1
 
 				if (serialPort1.IsOpen || serialPort2.IsOpen)
 				{
-                    PointLatLng point = new PointLatLng(elements[16].GetData(), elements[17].GetData());
+                    PointLatLng point = new PointLatLng(elements[17].GetData(), elements[16].GetData());
                     
                     if(!previousPoint.Equals(point))
                     {
@@ -196,7 +196,7 @@ namespace WindowsFormsApplication1
 					speed1.UpdateSpeed((float)elements[7].GetData());
                     vario1.UpdateClimb((float)elements[18].getDelta()/2);
                     altimeter1.UpdateAlt((float)elements[18].GetData());
-					compass1.UpdateHeading((float)decodedFromA[0]);
+                    compass1.UpdateHeading((float)elements[8].GetData() * 2 - 180);
 
 					invalidateViews();				
 				}
@@ -338,7 +338,7 @@ namespace WindowsFormsApplication1
 
 			public override void OnRender(Graphics g)
 			{
-				g.DrawImage(RotateImage(img, (float)decodedFromA[0]), LocalPosition.X, LocalPosition.Y, Size.Height, Size.Width);
+                g.DrawImage(RotateImage(img, (float)elements[8].GetData()*2 - 180 ), LocalPosition.X, LocalPosition.Y, Size.Height, Size.Width);
 				base.OnRender(g);
 			}
 		}

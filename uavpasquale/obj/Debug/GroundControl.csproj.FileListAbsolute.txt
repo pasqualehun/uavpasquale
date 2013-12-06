@@ -144,7 +144,6 @@ C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\bin\Debug\GroundC
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\bin\Debug\GroundControl.pdb
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\bin\Debug\GMap.NET.Core.dll
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\bin\Debug\GMap.NET.WindowsForms.dll
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\GroundControl.csprojResolveAssemblyReference.cache
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.Altimeter.resources
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.Compass.resources
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.Instruments.resources

@@ -21,6 +21,10 @@ namespace WindowsFormsApplication1
 		bool flagA = false;
 		bool flagB = false;
 
+
+        int countFlagA = 0;
+        int countFlagB = 0;
+
 		private int numberOfSamples;
 
 
@@ -38,6 +42,23 @@ namespace WindowsFormsApplication1
 
 		public void Calculate()
 		{
+            if (flagA == false)
+            {
+                countFlagA++;
+            }
+            else
+            {
+                countFlagA = 0;
+            }
+            if (flagB == false)
+            {
+                countFlagB++;
+            }
+            else
+            {
+                countFlagB = 0;
+            }
+
             if (flagA && flagB)
             {
                 double tempa = 0;
@@ -73,7 +94,6 @@ namespace WindowsFormsApplication1
 
                 if ((Math.Abs(tempa - tempb) < Math.Abs(GetData() * epsilon2)) && (faultA > 0) && (faultB > 0))
                 {
-
                     faultA = faultA - 2;
                     faultB = faultB - 2;
                 }
@@ -84,31 +104,49 @@ namespace WindowsFormsApplication1
                     faultB = faultB + 1;
                 }
 
-
                 flagA = flagB = false;
             }
             else
             {
                 //beragadás
-                if (Math.Abs(fromA[0] - fromA[numberOfSamples - 1]) < 0.0001)// && fromA[numberOfSamples - 1] != 0)
+                if (Math.Abs(fromA[0] - fromA[numberOfSamples - 1]) < 0.0001 || countFlagA >numberOfSamples )// && fromA[numberOfSamples - 1] != 0)
                 {
-                    faultA = faultA + 5;
+                    faultA = faultA + 15;
+                    if (faultB > 0)
+                    {
+                        faultB = faultB - 10;
+                    }
                 }
 
-                if (Math.Abs(fromB[0] - fromB[numberOfSamples - 1]) < 0.0001)// && fromB[numberOfSamples - 1] != 0)
+                if (Math.Abs(fromB[0] - fromB[numberOfSamples - 1]) < 0.0001 || countFlagB > numberOfSamples)// && fromB[numberOfSamples - 1] != 0)
                 {
-                    faultB = faultB + 5;
+                    faultB = faultB + 15;
+                    if (faultA > 0)
+                    {
+                        faultA = faultA - 10;
+                    }
                 }
             }
-
 		}
 
 		public double GetData()
 		{
-			if (faultA < faultB)
-				return fromA[numberOfSamples-1];
-			else
-				return fromB[numberOfSamples-1];
+            if (faultA < faultB)
+            {
+                if (faultA > 0)
+                {
+                    faultA--;
+                }
+                return fromA[numberOfSamples - 1];
+            }
+            else
+            {
+                if (faultB > 0)
+                {
+                    faultB--;
+                }
+                return fromB[numberOfSamples - 1];
+            }
 		}
 
 		public string GetName()

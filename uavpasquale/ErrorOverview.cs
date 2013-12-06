@@ -93,8 +93,7 @@ namespace WindowsFormsApplication1
 				g.DrawString(String.Format("{0,15:0.00}" , elements[i].fromA[9]) + " " , font, brushBlue, 260F, i * 12F);
                 g.DrawString(String.Format("{0:D3}", elements[i].faultA) + "    " + String.Format("{0:D3}", elements[i].faultB), font, brushBlue, 450F, i * 12F);
 
-				
-				g.DrawString(String.Format("{0,5:0.00}" , elements[i].fromB[9]), font, brushBlue, 350, i * 12F);
+				g.DrawString(String.Format("{0,15:0.00}" , elements[i].fromB[9]), font, brushBlue, 350, i * 12F);
 			}
        	}
 

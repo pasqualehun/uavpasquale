@@ -51,7 +51,7 @@ namespace WindowsFormsApplication1
         {
             Graphics g = e.Graphics;
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-
+             
             Draw(g);
             DrawCursor(g);
            // DrawNumbers(g);
