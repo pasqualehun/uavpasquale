@@ -96,17 +96,28 @@ namespace WindowsFormsApplication1
                     case "27": degree = "W"; break;
                     default:break;
                 }
+				
+				//measure the size of the degree, which is written
                 SizeF stringSize = g.MeasureString(degree, this.Font);
 
+				//calculate the radian of i.th iteration's degree
                 float angle2 = -CalculateRadian((float)i * 30+(float)heading +180);
+				
                 g.DrawLine(new Pen(Color.Blue, 2), center.X + (float)((size / 2) - 10) * (float)Math.Sin(angle2), center.Y + (float)((size / 2) - 10) * (float)Math.Cos(angle2), center.X + (float)(size / 2) * (float)Math.Sin(angle2), center.Y + (float)(size / 2) * (float)Math.Cos(angle2));
-                               
+                
+				//translate to the proper position
                 g.TranslateTransform(center.X + (float)((size / 2) - 20) * (float)Math.Sin(angle2) - 0, center.Y + (float)((size / 2) - 20) * (float)Math.Cos(angle2) - 0);
 
+				//rotate with the needed degree
 				g.RotateTransform(i * 30 + (float)heading + 180 + 180);
+				
+				//translate to the center of the string
                 g.TranslateTransform(-stringSize.Width / 2, -stringSize.Height / 2);
 
+				//draw the string
                 g.DrawString(degree, new Font("Arial", 8), new SolidBrush(Color.Blue), 0F, 0F);
+				
+				//reset the matrices
                 g.ResetTransform();
             }
         }
