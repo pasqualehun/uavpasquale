@@ -134,6 +134,7 @@ namespace WindowsFormsApplication1
 				tempd = Convert.ToDouble(temp);
 				tempd = tempd / (UInt16.MaxValue / 360) - 180;
 				returnArray[returnArrayIndex++] = tempd;
+                Console.WriteLine(tempd);
 
 				//9////////////////////////////////////23,24
 				firstBytePosition = 23;
@@ -142,7 +143,7 @@ namespace WindowsFormsApplication1
 				temp = temp | (uint)sentByteArray[firstBytePosition + 1];
 
 				tempd = Convert.ToDouble(temp);
-				tempd = tempd / (UInt16.MaxValue / 360) - 180;
+				tempd = tempd / (UInt16.MaxValue / 180) - 90;
 				returnArray[returnArrayIndex++] = tempd;
 
 				//10////////////////////////////////////25,26
@@ -215,7 +216,7 @@ namespace WindowsFormsApplication1
 				lon = lon | (uint)sentByteArray[firstBytePosition + 3];
 
 				double lond = Convert.ToDouble(lon);
-				lond = lond / (Int32.MaxValue / 180) - 90;
+				lond = lond / (UInt32.MaxValue / 360) - 180;
 				returnArray[returnArrayIndex++] = lond;
 				Console.WriteLine("lon: " + lond);
 
@@ -229,7 +230,7 @@ namespace WindowsFormsApplication1
 				lat = lat | (uint)sentByteArray[firstBytePosition + 3];
 
 				double latd = Convert.ToDouble(lat);
-				latd = latd / (Int32.MaxValue / 360) - 180;
+				latd = latd / (UInt32.MaxValue / 180) - 90;
 				returnArray[returnArrayIndex++] = latd;
 				Console.WriteLine("lat: " + latd);
 
@@ -242,7 +243,7 @@ namespace WindowsFormsApplication1
 				height = height | (uint)sentByteArray[firstBytePosition + 3];
 
 				double heightd = Convert.ToDouble(height);
-				heightd = heightd / (Int32.MaxValue / 10100) - 100;
+				heightd = heightd / (UInt32.MaxValue / 10100) - 100;
 				returnArray[returnArrayIndex++] = heightd;
 				Console.WriteLine("height: " + heightd);
 
@@ -347,7 +348,7 @@ namespace WindowsFormsApplication1
 		}
 
 
-		public static byte[] Code(double[] doubleArray, int n)
+		public static byte[] Code(double[] doubleArray, int numberOfPoints)
 		{
 			const int SIZE = 86;
 
@@ -358,30 +359,26 @@ namespace WindowsFormsApplication1
 				returnArray[i] =0x01;
 			}
 
-			int returnArrayIndex = 0;
-
 			UInt16 calculatedCheckSum = 0;
 			returnArray[0] = (byte)'G';
 			returnArray[1] = (byte)'P';
 			returnArray[2] = (byte)'S';
-			returnArray[3] = (byte) n;
+			returnArray[3] = (byte) numberOfPoints;
 
-			for (int i = 1; i < n * 2 + 1; i++)
+			for (int i = 1; i < numberOfPoints * 2 + 1; i++)
 			{
 
-				double a = doubleArray[i];
+				double temp = doubleArray[i];
 
-				a = a * (Int32.MaxValue / 360) + 180;
+                temp = temp * (UInt32.MaxValue / 360) + 180;
 
-				uint lon =(uint) Convert.ToUInt32(a);				
-
+                uint lon = (uint)Convert.ToUInt32(temp);
 				
-				returnArray[i*4] = (byte)(lon >> 24);
-				returnArray[i*4+1] = (byte)(lon >> 16);
-				returnArray[i*4+2] = (byte)(lon >> 8) ;
-				returnArray[i*4+3] = (byte)(lon >> 0);
-
-		}
+				returnArray[i*4]    = (byte)(lon >> 24);
+				returnArray[i*4+1]  = (byte)(lon >> 16);
+				returnArray[i*4+2]  = (byte)(lon >> 8) ;
+				returnArray[i*4+3]  = (byte)(lon >> 0);
+		    }
 
 			//checksum számolás
 			for (int j = 0; j < SIZE - 2; j++)
