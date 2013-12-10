@@ -50,6 +50,7 @@ namespace WindowsFormsApplication1
 		public void addItemsToComboboxes()
 		{			
 			string[] ports = SerialPort.GetPortNames();
+            
 			foreach (string port in ports)
 			{
 				comboBox1.Items.Add(port);
@@ -96,6 +97,17 @@ namespace WindowsFormsApplication1
                                 pufferA.RemoveRange(0, i);
                                 break;
                             }
+                            if (pufferA[i] == 'A' && pufferA[i + 1] == 'C' && pufferA[i + 2] == 'K')
+                            {
+                                
+                                for (int j = i; j < i + 3; j++)
+                                {
+                                    pufferA.RemoveAt(i);
+                                }
+                                pufferA.RemoveRange(0, i);
+                                MessageBox.Show("Sikeres feltöltés: " + serialPort1.PortName, "Feltöltés sikeres", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                break;
+                            }
                         }
                     }
                 }
@@ -136,6 +148,17 @@ namespace WindowsFormsApplication1
                                 updateElementsB();
                                 writeToTerminalB(receivedBytesB);
                                 pufferB.RemoveRange(0, i);
+                                break;
+                            }
+                            if (pufferB[i] == 'A' && pufferB[i + 1] == 'C' && pufferB[i + 2] == 'K')
+                            {
+
+                                for (int j = i; j < i + 3; j++)
+                                {
+                                    pufferB.RemoveAt(i);
+                                }
+                                pufferB.RemoveRange(0, i);
+                                MessageBox.Show("Sikeres feltöltés: " + serialPort2.PortName, "Feltöltés sikeres", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 break;
                             }
                         }
@@ -314,11 +337,11 @@ namespace WindowsFormsApplication1
 			gmap.Overlays.Add(routeOverlay2);			
 		}
 
-		void AddCoordinate(PointLatLng a)
+		void AddCoordinate(PointLatLng receivedCoordinate)
 		{			
-			flightRoute.Points.Add(a);
+			flightRoute.Points.Add(receivedCoordinate);
 			gmap.UpdateRouteLocalPosition(flightRoute);
-			planeMarker.Position = a;
+			planeMarker.Position = receivedCoordinate;
 			gmap.Invalidate();
 		}
 
@@ -331,9 +354,6 @@ namespace WindowsFormsApplication1
 				img = image;
 				Size = new Size(30, 30);
 				Offset = new System.Drawing.Point(-15, -15);
-				//img = image;
-				//Size = img.Size;
-				//Offset = new System.Drawing.Point(-Size.Width / 2, -Size.Height / 2);
 			}
 
 			public override void OnRender(Graphics g)
@@ -358,7 +378,6 @@ namespace WindowsFormsApplication1
 			gfx.RotateTransform(rotationAngle);
 
 			gfx.TranslateTransform(-(float)bmp.Width / 2, -(float)bmp.Height / 2);
-
 
 			//now draw our new image onto the graphics object
 			gfx.DrawImage(img, new Point(0, 0));
@@ -389,7 +408,7 @@ namespace WindowsFormsApplication1
 
 			plannedRouteOverlay.Routes.Add(plannedRoute);
 
-			calculation2.AddReferencesToPlanningCalculation(ref plannedRoute, gmap_plan);
+			planView.AddReferencesToPlanningCalculation(ref plannedRoute, gmap_plan);
 		}
 
 		int numberOfPoints = 1;
@@ -403,7 +422,6 @@ namespace WindowsFormsApplication1
 
 		private void gmap_plan_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
-
 			if (plannedRoute.Points.Count < MAX_POINTS && e.Button == MouseButtons.Left)
 			{
 				PointLatLng currentPos = new PointLatLng(gmap_plan.FromLocalToLatLng(e.X, e.Y).Lat, gmap_plan.FromLocalToLatLng(e.X, e.Y).Lng);
@@ -416,17 +434,13 @@ namespace WindowsFormsApplication1
 
 				plannedRoute.Points.Add(currentPos);
 
-				calculation2.Invalidate();
+				planView.Invalidate();
 
 				gmap_plan.UpdateRouteLocalPosition(plannedRoute);
 			}
 		}
 		int indexOfCurrentPoint;
 
-		private void gmap_MouseDoubleClick(object sender, MouseEventArgs e)
-		{
-			AddCoordinate(new PointLatLng(47.473838, 19.056988));
-		}
 
 		private void gmap_plan_OnMarkerEnter(GMapMarker item)
 		{
@@ -469,7 +483,7 @@ namespace WindowsFormsApplication1
 
 				gmap_plan.UpdateRouteLocalPosition(plannedRoute);
 				gmap_plan.Refresh();
-				calculation2.Invalidate();
+				planView.Invalidate();
 
 			}
 		}
@@ -489,8 +503,15 @@ namespace WindowsFormsApplication1
 			try
 			{
 				serialPort1.Write(SerialUtil.Code(points,plannedRoute.Points.Count),0,86);
-                serialPort2.Write(SerialUtil.Code(points, plannedRoute.Points.Count), 0, 86);			
 			}
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            try
+            {
+                serialPort2.Write(SerialUtil.Code(points, plannedRoute.Points.Count), 0, 86);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -506,14 +527,13 @@ namespace WindowsFormsApplication1
 				planeMarkerOverlay.Markers.Remove(currentMarker);
 				markerOverlay.Markers.Remove(currentMarker);
 
-
 				PointLatLng newPos = gmap_plan.FromLocalToLatLng(e.X, e.Y);
 
 				plannedRoute.Points.RemoveAt(indexOfCurrentPoint);
 				
 				gmap_plan.UpdateRouteLocalPosition(plannedRoute);
 				gmap_plan.Refresh();
-				calculation2.Invalidate();
+				planView.Invalidate();
 			}
 		}
 
