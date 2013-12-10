@@ -153,3 +153,4 @@ C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\Windows
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\GroundControl.csproj.GenerateResource.Cache
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.ErrorOverview.resources
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.PlanView.resources
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\GroundControl.csprojResolveAssemblyReference.cache

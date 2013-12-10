@@ -53,7 +53,7 @@
             this.vario1 = new WindowsFormsApplication1.Vario();
             this.altimeter1 = new WindowsFormsApplication1.Altimeter();
             this.compass1 = new WindowsFormsApplication1.Compass();
-            this.calculation2 = new WindowsFormsApplication1.PlanView();
+            this.planView = new WindowsFormsApplication1.PlanView();
             this.view1 = new WindowsFormsApplication1.ErrorOverview();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -108,7 +108,6 @@
             this.gmap.TabIndex = 6;
             this.gmap.Zoom = 14D;
             this.gmap.Load += new System.EventHandler(this.gMapControl1_Load);
-            this.gmap.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gmap_MouseDoubleClick);
             // 
             // comboBox2
             // 
@@ -160,7 +159,7 @@
             // 
             this.tabPage3.Controls.Add(this.uploadButton1);
             this.tabPage3.Controls.Add(this.gmap_plan);
-            this.tabPage3.Controls.Add(this.calculation2);
+            this.tabPage3.Controls.Add(this.planView);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
@@ -341,12 +340,12 @@
             // 
             // calculation2
             // 
-            this.calculation2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.calculation2.Location = new System.Drawing.Point(707, 0);
-            this.calculation2.Margin = new System.Windows.Forms.Padding(5);
-            this.calculation2.Name = "calculation2";
-            this.calculation2.Size = new System.Drawing.Size(253, 199);
-            this.calculation2.TabIndex = 8;
+            this.planView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.planView.Location = new System.Drawing.Point(707, 0);
+            this.planView.Margin = new System.Windows.Forms.Padding(5);
+            this.planView.Name = "calculation2";
+            this.planView.Size = new System.Drawing.Size(253, 199);
+            this.planView.TabIndex = 8;
             // 
             // view1
             // 
@@ -400,7 +399,7 @@
 		private ErrorOverview view1;
 		private System.Windows.Forms.TabPage tabPage3;
 		private GMap.NET.WindowsForms.GMapControl gmap_plan;
-		private PlanView calculation2;
+		private PlanView planView;
 		private System.Windows.Forms.Button uploadButton1;
         private System.Windows.Forms.ComboBox baudCombo1;
         private System.Windows.Forms.ComboBox baudCombo2;
