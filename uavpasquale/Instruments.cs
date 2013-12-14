@@ -94,17 +94,28 @@ namespace WindowsFormsApplication1
                                 decodedFromA = SerialUtil.Decode(receivedBytesA);
                                 updateElementsA();
                                 writeToTerminalA(receivedBytesA);
-                                pufferA.RemoveRange(0, i);
+                                //pufferA.RemoveRange(0, i);
                                 break;
                             }
+                           
+                        }
+                    }
+                    if (pufferA.Count > 2)
+                    {
+
+                        int i=0;
+                        for (; i < pufferA.Count; i++)
+                        {
                             if (pufferA[i] == 'A' && pufferA[i + 1] == 'C' && pufferA[i + 2] == 'K')
                             {
-                                
+                                int k = 0;
                                 for (int j = i; j < i + 3; j++)
                                 {
+                                    receivedBytesA[k++] = pufferA[i];
                                     pufferA.RemoveAt(i);
                                 }
                                 pufferA.RemoveRange(0, i);
+                                writeToTerminalA(receivedBytesA);
                                 MessageBox.Show("Sikeres feltöltés: " + serialPort1.PortName, "Feltöltés sikeres", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 break;
                             }
@@ -152,12 +163,19 @@ namespace WindowsFormsApplication1
                             }
                             if (pufferB[i] == 'A' && pufferB[i + 1] == 'C' && pufferB[i + 2] == 'K')
                             {
-
-                                for (int j = i; j < i + 3; j++)
+                                int k = 0;
+                                for (int j = i; j < i + 5; j++)
                                 {
+                                    receivedBytesB[k++] = pufferB[i];
                                     pufferB.RemoveAt(i);
                                 }
                                 pufferB.RemoveRange(0, i);
+                                //uint calculatedCheckSum = 0;
+                                ////checksum számolás
+                                //for (int j = 0; j < 5; j++)
+                                //{
+                                //    calculatedCheckSum += receivedBytesB[j];
+                                //}
                                 MessageBox.Show("Sikeres feltöltés: " + serialPort2.PortName, "Feltöltés sikeres", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 break;
                             }
