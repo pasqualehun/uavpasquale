@@ -11,6 +11,8 @@ namespace WindowsFormsApplication1
 {
 	public partial class ErrorOverview : UserControl
 	{
+
+        private int MAX_ERROR = 20;
 		private PointF center;
 		private int size;
 		private PointF position;
@@ -25,6 +27,9 @@ namespace WindowsFormsApplication1
 		SolidBrush brushBlue;
 		SolidBrush brushBlack;
 		SolidBrush brushRed;
+
+        bool portAErrorCreated = false;
+        bool portBErrorCreated = false;
 
 		//68
 		private String[] error_imu_gps_ahrs	= {"IMU angvel range", "IMU angvel freeze", "IMU acc range", "IMU acc freeze", "IMU mag range", "IMU mag freeze", "IMU Ps range", "IMU Ps freeze", "IMU Pt range", "IMU Pt freeze", "GPS lat range", "GPS lat freeze", "GPS lon range", "GPS lon freeze", "GPS alt range", "GPS alt freeze", "GPS vn range", "GPS vn freeze", "GPS ve range", "GPS ve freeze", "GPS vd range", "GPS vd freeze", "GPS ITOW range", "GPS ITOW freeze", "AHRS bias range", "AHRS bias freeze", "AHRS Euler range", "AHRS Euler freeze"};
@@ -85,15 +90,69 @@ namespace WindowsFormsApplication1
 			Draw(g);
 		}
 
+        public void CheckFaults()
+        {
+            bool portAError = true;
+            bool portBError = true;           
+
+            for (int i = 0; i < elements.Length; i++)
+            {
+                if (elements[i].faultA < MAX_ERROR)
+                {
+                    portAError = false;
+                }
+
+                if (elements[i].faultB < MAX_ERROR)
+                {
+                    portBError = false;
+                }
+            }
+
+            if (portAError && !portAErrorCreated)
+            {
+                portAErrorCreated = true;
+                MessageBox.Show("Port A kiesett", "Port hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            if (portBError && !portBErrorCreated)
+            {
+                portBErrorCreated = true;
+                MessageBox.Show("Port B kiesett", "Port hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                
+            }
+        }
+
 		private void Draw(Graphics g)
 		{
-			for (int i = 0; i < 29; i++)
+            Brush brush;
+			for (int i = 0; i < elements.Length; i++)
 			{
+                
+
 				g.DrawString(elements[i].GetName(), font, brushBlue, 120F, i * 12F);
 				g.DrawString(String.Format("{0,15:0.00}" , elements[i].fromA[9]) + " " , font, brushBlue, 260F, i * 12F);
-                g.DrawString(String.Format("{0:D3}", elements[i].faultA) + "    " + String.Format("{0:D3}", elements[i].faultB), font, brushBlue, 450F, i * 12F);
-
+                
 				g.DrawString(String.Format("{0,15:0.00}" , elements[i].fromB[9]), font, brushBlue, 350, i * 12F);
+
+                if (elements[i].faultA > MAX_ERROR)
+                {
+                    brush = brushRed;
+                }
+                else
+                {
+                    brush = brushBlue;
+                }
+
+                g.DrawString(String.Format("{0:D3}", elements[i].faultA),           font, brush, 450F, i * 12F);
+
+                if (elements[i].faultB > MAX_ERROR)
+                {
+                    brush = brushRed;
+                }
+                else
+                {
+                    brush = brushBlue;
+                }
+                g.DrawString(String.Format("{0:D3}", elements[i].faultB),  font, brush, 500F, i * 12F);
 			}
        	}
 
