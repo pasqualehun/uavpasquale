@@ -233,6 +233,7 @@ namespace WindowsFormsApplication1
                     }
 
 					view1.getReference(ref elements);
+                    view1.CheckFaults();
 				
 					speed1.UpdateSpeed((float)elements[7].GetData());
                     vario1.UpdateClimb((float)elements[18].getDelta()/2);
