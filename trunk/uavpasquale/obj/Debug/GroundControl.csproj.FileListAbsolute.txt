@@ -1,156 +1,16 @@
-D:\Documents and Settings\pasq\Dokumentumok\Visual Studio 2008\GroundControl\GroundControl\bin\Debug\GroundControl.exe
-D:\Documents and Settings\pasq\Dokumentumok\Visual Studio 2008\GroundControl\GroundControl\bin\Debug\GroundControl.pdb
-D:\Documents and Settings\pasq\Dokumentumok\Visual Studio 2008\GroundControl\GroundControl\obj\Debug\ResolveAssemblyReference.cache
-D:\Documents and Settings\pasq\Dokumentumok\Visual Studio 2008\GroundControl\GroundControl\obj\Debug\WindowsFormsApplication1.Altimeter.resources
-D:\Documents and Settings\pasq\Dokumentumok\Visual Studio 2008\GroundControl\GroundControl\obj\Debug\WindowsFormsApplication1.Compass.resources
-D:\Documents and Settings\pasq\Dokumentumok\Visual Studio 2008\GroundControl\GroundControl\obj\Debug\WindowsFormsApplication1.Instruments.resources
-D:\Documents and Settings\pasq\Dokumentumok\Visual Studio 2008\GroundControl\GroundControl\obj\Debug\GroundControl.Properties.Resources.resources
-D:\Documents and Settings\pasq\Dokumentumok\Visual Studio 2008\GroundControl\GroundControl\obj\Debug\WindowsFormsApplication1.Speed.resources
-D:\Documents and Settings\pasq\Dokumentumok\Visual Studio 2008\GroundControl\GroundControl\obj\Debug\WindowsFormsApplication1.Vario.resources
-D:\Documents and Settings\pasq\Dokumentumok\Visual Studio 2008\GroundControl\GroundControl\obj\Debug\GroundControl.csproj.GenerateResource.Cache
-D:\Documents and Settings\pasq\Dokumentumok\Visual Studio 2008\GroundControl\GroundControl\obj\Debug\GroundControl.exe
-D:\Documents and Settings\pasq\Dokumentumok\Visual Studio 2008\GroundControl\GroundControl\obj\Debug\GroundControl.pdb
-D:\Documents and Settings\pasq\Dokumentumok\Visual Studio 2008\GroundControl\GroundControl\bin\Debug\GMap.NET.Core.dll
-D:\Documents and Settings\pasq\Dokumentumok\Visual Studio 2008\GroundControl\GroundControl\bin\Debug\GMap.NET.WindowsForms.dll
-D:\Documents and Settings\pasq\Dokumentumok\Visual Studio 2008\GroundControl\GroundControl\bin\Debug\GMap.NET.WindowsForms.xml
-D:\Documents and Settings\pasq\Dokumentumok\Visual Studio 2008\GroundControl\GroundControl\bin\Debug\GMap.NET.Core.xml
-D:\Documents and Settings\pasq\Dokumentumok\Visual Studio 2008\GroundControl\GroundControl\bin\Debug\BSE.Windows.Forms.dll
-D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\bin\Debug\GroundControl.exe.config
-D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Debug\GroundControl.exe
-D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Debug\GroundControl.pdb
-D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\bin\Debug\GroundControl.exe
-D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\bin\Debug\GroundControl.pdb
-D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\bin\Debug\GMap.NET.Core.dll
-D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\bin\Debug\GMap.NET.WindowsForms.dll
-D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\bin\Debug\GMap.NET.Core.xml
-D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\bin\Debug\GMap.NET.WindowsForms.xml
-D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Debug\ResolveAssemblyReference.cache
-D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Debug\WindowsFormsApplication1.Altimeter.resources
-D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Debug\WindowsFormsApplication1.Compass.resources
-D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Debug\WindowsFormsApplication1.Instruments.resources
-D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Debug\GroundControl.Properties.Resources.resources
-D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Debug\WindowsFormsApplication1.Speed.resources
-D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Debug\WindowsFormsApplication1.Vario.resources
-D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Debug\GenerateResource.read.1.tlog
-D:\Documents and Settings\pasq\Dokumentumok\visual studio 2010\Projects\GroundControl\GroundControl\obj\Debug\GenerateResource.write.1.tlog
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\bin\Debug\GroundControl.exe.config
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Debug\GroundControl.exe
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Debug\GroundControl.pdb
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\bin\Debug\GroundControl.exe
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\bin\Debug\GroundControl.pdb
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\bin\Debug\GMap.NET.Core.dll
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\bin\Debug\GMap.NET.WindowsForms.dll
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\bin\Debug\GMap.NET.Core.xml
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\bin\Debug\GMap.NET.WindowsForms.xml
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Debug\WindowsFormsApplication1.Altimeter.resources
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Debug\WindowsFormsApplication1.Compass.resources
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Debug\WindowsFormsApplication1.Instruments.resources
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Debug\GroundControl.Properties.Resources.resources
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Debug\WindowsFormsApplication1.Speed.resources
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Debug\WindowsFormsApplication1.Vario.resources
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Debug\GenerateResource.read.1.tlog
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Debug\GenerateResource.write.1.tlog
-C:\Users\Pasquale\Desktop\GroundControl\GroundControl\obj\Debug\GroundControl.View.resources
-C:\Documents and Settings\pasq\Asztal\GroundControl\bin\Debug\GroundControl.exe.config
-C:\Documents and Settings\pasq\Asztal\GroundControl\obj\Debug\GroundControl.exe
-C:\Documents and Settings\pasq\Asztal\GroundControl\obj\Debug\GroundControl.pdb
-C:\Documents and Settings\pasq\Asztal\GroundControl\obj\Debug\ResolveAssemblyReference.cache
-C:\Documents and Settings\pasq\Asztal\GroundControl\obj\Debug\WindowsFormsApplication1.Altimeter.resources
-C:\Documents and Settings\pasq\Asztal\GroundControl\obj\Debug\WindowsFormsApplication1.Compass.resources
-C:\Documents and Settings\pasq\Asztal\GroundControl\obj\Debug\WindowsFormsApplication1.Instruments.resources
-C:\Documents and Settings\pasq\Asztal\GroundControl\obj\Debug\GroundControl.Properties.Resources.resources
-C:\Documents and Settings\pasq\Asztal\GroundControl\obj\Debug\WindowsFormsApplication1.Speed.resources
-C:\Documents and Settings\pasq\Asztal\GroundControl\obj\Debug\WindowsFormsApplication1.Vario.resources
-C:\Documents and Settings\pasq\Asztal\GroundControl\obj\Debug\GenerateResource.read.1.tlog
-C:\Documents and Settings\pasq\Asztal\GroundControl\obj\Debug\GenerateResource.write.1.tlog
-C:\Documents and Settings\pasq\Asztal\GroundControl\bin\Debug\GroundControl.exe
-C:\Documents and Settings\pasq\Asztal\GroundControl\bin\Debug\GroundControl.pdb
-C:\Documents and Settings\pasq\Asztal\GroundControl\bin\Debug\GMap.NET.Core.xml
-C:\Documents and Settings\pasq\Asztal\GroundControl\bin\Debug\GMap.NET.WindowsForms.xml
-C:\Documents and Settings\pasq\Asztal\GroundControl\obj\Debug\WindowsFormsApplication1.View.resources
-C:\Users\Pasquale\Desktop\GroundControl\bin\Debug\GroundControl.exe.config
-C:\Users\Pasquale\Desktop\GroundControl\bin\Debug\GroundControl.exe
-C:\Users\Pasquale\Desktop\GroundControl\bin\Debug\GroundControl.pdb
-C:\Users\Pasquale\Desktop\GroundControl\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Pasquale\Desktop\GroundControl\obj\Debug\WindowsFormsApplication1.Altimeter.resources
-C:\Users\Pasquale\Desktop\GroundControl\obj\Debug\WindowsFormsApplication1.Compass.resources
-C:\Users\Pasquale\Desktop\GroundControl\obj\Debug\WindowsFormsApplication1.Instruments.resources
-C:\Users\Pasquale\Desktop\GroundControl\obj\Debug\GroundControl.Properties.Resources.resources
-C:\Users\Pasquale\Desktop\GroundControl\obj\Debug\WindowsFormsApplication1.Speed.resources
-C:\Users\Pasquale\Desktop\GroundControl\obj\Debug\WindowsFormsApplication1.Vario.resources
-C:\Users\Pasquale\Desktop\GroundControl\obj\Debug\WindowsFormsApplication1.View.resources
-C:\Users\Pasquale\Desktop\GroundControl\obj\Debug\GenerateResource.read.1.tlog
-C:\Users\Pasquale\Desktop\GroundControl\obj\Debug\GenerateResource.write.1.tlog
-C:\Users\Pasquale\Desktop\GroundControl\obj\Debug\GroundControl.exe
-C:\Users\Pasquale\Desktop\GroundControl\obj\Debug\GroundControl.pdb
-C:\Users\Pasquale\Desktop\GroundControl másolata másolata\obj\Debug\GroundControl.pdb
-C:\Users\Pasquale\Desktop\GroundControl\bin\Debug\GMap.NET.Core.dll
-C:\Users\Pasquale\Desktop\GroundControl\bin\Debug\GMap.NET.WindowsForms.dll
-C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\bin\Debug\GroundControl.exe.config
-C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\GroundControl.exe
-C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\GroundControl.pdb
-C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\bin\Debug\GroundControl.exe
-C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\bin\Debug\GroundControl.pdb
-C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\bin\Debug\GMap.NET.Core.dll
-C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\bin\Debug\GMap.NET.WindowsForms.dll
-C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\ResolveAssemblyReference.cache
-C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\WindowsFormsApplication1.Altimeter.resources
-C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\WindowsFormsApplication1.Compass.resources
-C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\WindowsFormsApplication1.Instruments.resources
-C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\GroundControl.Properties.Resources.resources
-C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\WindowsFormsApplication1.Speed.resources
-C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\WindowsFormsApplication1.Vario.resources
-C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\WindowsFormsApplication1.View.resources
-C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\GenerateResource.read.1.tlog
-C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\GenerateResource.write.1.tlog
-C:\Documents and Settings\user\Dokumentumok\Visual Studio 2010\Projects\GroundControl\obj\Debug\WindowsFormsApplication1.Calculation.resources
-C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\bin\Debug\GroundControl.exe.config
-C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\GroundControl.exe
-C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\GroundControl.pdb
-C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\bin\Debug\GroundControl.exe
-C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\bin\Debug\GroundControl.pdb
-C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\bin\Debug\GMap.NET.Core.dll
-C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\bin\Debug\GMap.NET.WindowsForms.dll
-C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\WindowsFormsApplication1.Altimeter.resources
-C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\WindowsFormsApplication1.Calculation.resources
-C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\WindowsFormsApplication1.Compass.resources
-C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\WindowsFormsApplication1.Instruments.resources
-C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\GroundControl.Properties.Resources.resources
-C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\WindowsFormsApplication1.Speed.resources
-C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\WindowsFormsApplication1.Vario.resources
-C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\WindowsFormsApplication1.View.resources
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project1\bin\Debug\GroundControl.exe.config
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project1\obj\Debug\GroundControl.exe
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project1\obj\Debug\GroundControl.pdb
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project1\bin\Debug\GroundControl.exe
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project1\bin\Debug\GroundControl.pdb
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project1\bin\Debug\GMap.NET.Core.dll
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project1\bin\Debug\GMap.NET.WindowsForms.dll
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project1\obj\Debug\WindowsFormsApplication1.Altimeter.resources
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project1\obj\Debug\WindowsFormsApplication1.Calculation.resources
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project1\obj\Debug\WindowsFormsApplication1.Compass.resources
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project1\obj\Debug\WindowsFormsApplication1.Instruments.resources
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project1\obj\Debug\GroundControl.Properties.Resources.resources
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project1\obj\Debug\WindowsFormsApplication1.Speed.resources
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project1\obj\Debug\WindowsFormsApplication1.Vario.resources
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project1\obj\Debug\WindowsFormsApplication1.View.resources
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project1\obj\Debug\GroundControl.csproj.GenerateResource.Cache
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\bin\Debug\GroundControl.exe.config
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\GroundControl.exe
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\GroundControl.pdb
-C:\Users\Pasquale\Documents\Visual Studio 2010\Projects\Groud\uavpasquale\obj\Debug\GroundControl.csproj.GenerateResource.Cache
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\bin\Debug\GroundControl.exe
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\bin\Debug\GroundControl.pdb
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\bin\Debug\GMap.NET.Core.dll
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\bin\Debug\GMap.NET.WindowsForms.dll
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.Altimeter.resources
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.PlanView.resources
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.Compass.resources
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.Instruments.resources
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\GroundControl.Properties.Resources.resources
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.Speed.resources
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.Vario.resources
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\GroundControl.csproj.GenerateResource.Cache
 C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.ErrorOverview.resources
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\WindowsFormsApplication1.PlanView.resources
-C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\GroundControl.csprojResolveAssemblyReference.cache
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\GroundControl.csproj.GenerateResource.Cache
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\GroundControl.exe
+C:\Users\bojtip\Documents\Visual Studio 2010\Projects\Project2\obj\Debug\GroundControl.pdb

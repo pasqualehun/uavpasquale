@@ -313,8 +313,10 @@ namespace WindowsFormsApplication1
 		static GMapRoute flightRoute = new GMapRoute("");
 
 		static GMapMarkerImage planeMarker;
+        GMarkerGoogle gPlaneMarker;
 
 		GMapOverlay planeMarkerOverlay = new GMapOverlay("markers");
+
 
 		private void gMapControl1_Load(object sender, EventArgs e)
 		{
@@ -328,16 +330,23 @@ namespace WindowsFormsApplication1
 			gmap.SetPositionByKeywords("Budapest, Hungary");
 			gmap.Position = new PointLatLng(47.471154, 19.062481);
 
-			
+           
+            try
+            {
+                Bitmap btm = new Bitmap("planeicon.png");
+                planeMarker = new GMapMarkerImage(new PointLatLng(47.471154, 19.062481), btm);
+                planeMarkerOverlay.Markers.Add(planeMarker);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("A planeicon.PNG erőforrás nem található", "Repülőgép ikon hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                gPlaneMarker = new GMarkerGoogle(new PointLatLng(47.471154, 19.062481), GMarkerGoogleType.green);
+                planeMarkerOverlay.Markers.Add(gPlaneMarker);
+            }
 
-			Bitmap btm = new Bitmap("png1t.png");
-			if (btm == null)
-				throw new NoNullAllowedException("as");
 
-			planeMarker = new GMapMarkerImage(new PointLatLng(47.471154, 19.062481), btm);
-			planeMarkerOverlay.Markers.Add(planeMarker);
-			gmap.Overlays.Add(planeMarkerOverlay);
-
+   
+            gmap.Overlays.Add(planeMarkerOverlay);
 
 			GMapOverlay flightRouteOverlay = new GMapOverlay("polygons");			
 	
@@ -360,7 +369,14 @@ namespace WindowsFormsApplication1
 		{			
 			flightRoute.Points.Add(receivedCoordinate);
 			gmap.UpdateRouteLocalPosition(flightRoute);
-			planeMarker.Position = receivedCoordinate;
+            try
+            {
+                planeMarker.Position = receivedCoordinate;
+            }
+            catch 
+            {
+                gPlaneMarker.Position = receivedCoordinate;
+            }
 			gmap.Invalidate();
 		}
 
