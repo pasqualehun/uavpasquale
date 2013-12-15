@@ -13,10 +13,6 @@ namespace WindowsFormsApplication1
 	{
 
         private int MAX_ERROR = 20;
-		private PointF center;
-		private int size;
-		private PointF position;
-
 
 		private DataElement[] elements;
 

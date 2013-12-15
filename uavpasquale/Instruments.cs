@@ -337,7 +337,7 @@ namespace WindowsFormsApplication1
                 planeMarker = new GMapMarkerImage(new PointLatLng(47.471154, 19.062481), btm);
                 planeMarkerOverlay.Markers.Add(planeMarker);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("A planeicon.PNG erőforrás nem található", "Repülőgép ikon hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 gPlaneMarker = new GMarkerGoogle(new PointLatLng(47.471154, 19.062481), GMarkerGoogleType.green);
@@ -601,7 +601,7 @@ namespace WindowsFormsApplication1
                     enableComboboxes(false);
                 }
                 // give a message, if the port is not available:
-                catch (NullReferenceException eex)
+                catch (NullReferenceException)
                 {
                     MessageBox.Show("Nincs jó érték kiválasztva ", "Soros port hiba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
